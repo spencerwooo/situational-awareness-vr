@@ -1,4 +1,4 @@
-<img src="Assets/vr-emoji.png" alt="VR Emoji" align="right" width="140px" />
+<img src="Assets/Images/vr-emoji.png" alt="VR Emoji" align="right" width="140px" />
 
 # situational-awareness-vr
 
