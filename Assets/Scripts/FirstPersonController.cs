@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -70,6 +71,13 @@ namespace StarterAssets
 
     private const float _threshold = 0.01f;
 
+    // ray casting and vision collision detection
+    private RaycastHit _vision;
+    private float _rayLength = 30.0f;
+
+    // show current attention object
+    public TextMeshProUGUI objectAttentionText;
+
     private void Awake()
     {
       // get a reference to our main camera
@@ -99,6 +107,30 @@ namespace StarterAssets
     private void LateUpdate()
     {
       CameraRotation();
+    }
+
+    private void FixedUpdate()
+    {
+      RayCastAttention();
+    }
+
+    private void RayCastAttention()
+    {
+      Vector3 camPosition = Camera.main.transform.position;
+      Vector3 camDirection = Camera.main.transform.forward;
+      Debug.DrawRay(camPosition, camDirection * _rayLength, Color.red, 0.5f);
+
+      if (Physics.Raycast(camPosition, camDirection, out _vision, _rayLength))
+      {
+        if (_vision.collider.CompareTag("Interactive"))
+        {
+          objectAttentionText.text = "Attention: " + _vision.collider.name;
+        }
+        else
+        {
+          objectAttentionText.text = "Attention: _";
+        }
+      }
     }
 
     private void GroundedCheck()
