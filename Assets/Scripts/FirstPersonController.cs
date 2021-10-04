@@ -116,11 +116,14 @@ namespace StarterAssets
 
     private void RayCastAttention()
     {
+      int layerMask = 1 << 8;
+      layerMask = ~layerMask;
+
       Vector3 camPosition = Camera.main.transform.position;
       Vector3 camDirection = Camera.main.transform.forward;
       Debug.DrawRay(camPosition, camDirection * _rayLength, Color.red, 0.5f);
 
-      if (Physics.Raycast(camPosition, camDirection, out _vision, _rayLength))
+      if (Physics.Raycast(camPosition, camDirection, out _vision, _rayLength, layerMask))
       {
         if (_vision.collider.CompareTag("Interactive"))
         {
