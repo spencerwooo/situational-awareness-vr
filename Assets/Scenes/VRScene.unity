@@ -352,7 +352,7 @@ MonoBehaviour:
   m_SmoothMovement: 0
   m_FollowTightness: 10
   m_SnapThresholdDistance: 10
-  m_Reticle: {fileID: 0}
+  m_Reticle: {fileID: 170818922}
   m_StopLineAtFirstRaycastHit: 1
 --- !u!120 &170818925
 LineRenderer:
@@ -684,6 +684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae49691bae0361429c2ff65d3ffe21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTriggerPressed: 0
+  controller: {fileID: 0}
 --- !u!1 &177467707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,15 +4668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858171f3058400b44b956326c9817525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleRate: 2
-  hitObjectText: {fileID: 862304520}
-  hitPointText: {fileID: 259198189}
-  distanceText: {fileID: 1380368646}
-  framePerSecText: {fileID: 332616319}
-  playerPositionText: {fileID: 756869410}
-  playerOrientationText: {fileID: 1141554347}
-  mainCamera: {fileID: 0}
-  rayLength: 30
 --- !u!114 &1991185061
 MonoBehaviour:
   m_ObjectHideFlags: 0
