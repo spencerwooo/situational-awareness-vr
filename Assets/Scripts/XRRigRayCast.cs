@@ -44,7 +44,7 @@ public class XRRigRayCast : MonoBehaviour
     if (Physics.Raycast(headsetPos, headsetDir, out vision, rayLength, layerMask))
     {
       hitObjectText.text = vision.collider.name;
-      hitPointText.text = string.Format("[{0:0.00}, {1:0.00}, {2:0.00}]", vision.point.x, vision.point.y, vision.point.z);
+      hitPointText.text = FormatVector3(vision.point);
       distanceText.text = string.Format("{0:0.00}", vision.distance);
     }
   }
@@ -55,12 +55,18 @@ public class XRRigRayCast : MonoBehaviour
     Vector3 playerOrientation = mainCamera.transform.forward;
 
     framePerSecText.text = string.Format("{0}", getFramePerSec());
-    playerPositionText.text = string.Format("[{0:0.00}, {1:0.00}, {2:0.00}]", playerPosition.x, playerPosition.y, playerPosition.z);
-    playerOrientationText.text = string.Format("[{0:0.00}, {1:0.00}, {2:0.00}]", playerOrientation.x, playerOrientation.y, playerOrientation.z);
+    playerPositionText.text = FormatVector3(playerPosition);
+    playerOrientationText.text = FormatVector3(playerOrientation);
   }
 
   private float getFramePerSec()
   {
     return 1.0f / Time.deltaTime;
+  }
+
+  private string FormatVector3(Vector3 vec)
+  {
+    // format a Vector3 <a, b, c> to string [a, b, c]
+    return string.Format("[{0:0.00}, {1:0.00}, {2:0.00}]", vec.x, vec.y, vec.z);
   }
 }
