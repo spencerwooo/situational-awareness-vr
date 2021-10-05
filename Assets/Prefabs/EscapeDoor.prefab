@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3385597282112660621}
   - component: {fileID: 3385597282112660620}
   m_Layer: 0
-  m_Name: Door 1
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3385597282409316391}
   - component: {fileID: 3385597282409316390}
   m_Layer: 0
-  m_Name: Door 1 Lighting Top
+  m_Name: Door Lighting Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3385597282629666116}
   - component: {fileID: 3385597282629666119}
   m_Layer: 0
-  m_Name: Door 1 Lighting Bottom
+  m_Name: Door Lighting Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
