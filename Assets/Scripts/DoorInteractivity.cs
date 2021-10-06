@@ -5,23 +5,52 @@ using UnityEngine.InputSystem;
 
 public class DoorInteractivity : MonoBehaviour
 {
-  public InputActionReference triggerReference = null;
+  public InputActionReference TriggerReference = null;
+  public bool DoorLocked = true;
 
   [SerializeField] private Animator doorAnimator;
+  [SerializeField] private GameObject lightingTop;
+  [SerializeField] private GameObject lightingBottom;
+  [SerializeField] private Material lightingRed;
+  [SerializeField] private Material lightingGreen;
 
   private void Awake()
   {
-    triggerReference.action.started += DoorUnlock;
+    TriggerReference.action.started += DoorController;
   }
 
   private void OnDestroy()
   {
-    triggerReference.action.started -= DoorUnlock;
+    TriggerReference.action.started -= DoorController;
   }
 
-  public void DoorUnlock(InputAction.CallbackContext ctx)
+  public void DoorController(InputAction.CallbackContext ctx)
   {
-    Debug.Log("Door unlocked. Performing door open animation.");
+    if (DoorLocked)
+    {
+      doorUnlock();
+    }
+    else
+    {
+      doorLock();
+    }
+  }
+
+  private void doorUnlock()
+  {
+    Debug.Log("Door opening.");
+    DoorLocked = false;
     doorAnimator.Play("DoorOpen", 0, 0.0f);
+    lightingTop.GetComponent<Renderer>().material = lightingGreen;
+    lightingBottom.GetComponent<Renderer>().material = lightingGreen;
+  }
+
+  private void doorLock()
+  {
+    Debug.Log("Door closing.");
+    DoorLocked = true;
+    doorAnimator.Play("DoorClose", 0, 0.0f);
+    lightingTop.GetComponent<Renderer>().material = lightingRed;
+    lightingBottom.GetComponent<Renderer>().material = lightingRed;
   }
 }

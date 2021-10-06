@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7864827, g: 0.786579, b: 0.7864493, a: 1}
+  m_IndirectSpecularColor: {r: 0.7864847, g: 0.78658116, b: 0.7864517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4938,6 +4938,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3385597282409316391, guid: ca788570af2e15847accdb5b7259309d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b68fab9b92be39b41b05b27b07e299a5, type: 2}
     - target: {fileID: 3966228543309776105, guid: ca788570af2e15847accdb5b7259309d, type: 3}
       propertyPath: m_Name
       value: EscapeDoor 1
@@ -4961,3 +4965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412b9d87584c6184cab6a73441823a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerReference: {fileID: 0}
+  doorAnimator: {fileID: 0}
+  lightingTop: {fileID: 0}
+  lightingBottom: {fileID: 0}
+  lightingRed: {fileID: 0}
+  lightingGreen: {fileID: 0}
