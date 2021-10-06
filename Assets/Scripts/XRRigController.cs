@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class XRRigRayCast : MonoBehaviour
+public class XRRigController : MonoBehaviour
 {
   public float sampleRate = 2.0f;
   public TextMeshProUGUI hitObjectText;
