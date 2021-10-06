@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8413449848014640486}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: EscapeDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412b9d87584c6184cab6a73441823a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerReference: {fileID: -2775837120590753941, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
   DoorLocked: 1
   doorAnimator: {fileID: 8413449848014640486}
   lightingTop: {fileID: 3385597282409316385}

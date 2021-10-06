@@ -1,25 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRHandController : MonoBehaviour
 {
-  // https://forum.unity.com/threads/door-open-close-in-c.410811/
-  // https://forum.unity.com/threads/any-example-of-the-new-2019-1-xr-input-system.629824/#post-4360375
-  public bool isTriggerPressed;
-  public ActionBasedController controller;
+  public InputActionReference TriggerReference = null;
+  [SerializeField] private XRRayInteractor rayInteractor;
 
-  void Start()
+  private GameObject triggeredDoor = null;
+  private RaycastHit rayInteractable;
+
+  private void Awake()
   {
-    if (controller == null)
-    {
-      controller = GetComponent<ActionBasedController>();
-    }
+    TriggerReference.action.started += DoorController;
   }
 
-  void Update()
+  private void OnDestroy()
   {
-    // Debug.Log(controller.selectAction.action.ReadValue<bool>());
+    TriggerReference.action.started -= DoorController;
+  }
+
+  private void DoorController(InputAction.CallbackContext ctx)
+  {
+    if (rayInteractor.TryGetCurrent3DRaycastHit(out rayInteractable))
+    {
+      if (rayInteractable.collider.CompareTag("EscapeDoor"))
+      {
+        triggeredDoor = rayInteractable.collider.gameObject.transform.parent.gameObject;
+      }
+    }
+
+    if (triggeredDoor)
+    {
+      DoorInteractivity doorController = triggeredDoor.GetComponent<DoorInteractivity>();
+
+      if (doorController.DoorLocked)
+      {
+        doorController.doorUnlock();
+      }
+      else
+      {
+        doorController.doorLock();
+      }
+    }
   }
 }
