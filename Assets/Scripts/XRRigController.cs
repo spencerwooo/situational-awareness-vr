@@ -61,6 +61,7 @@ public class XRRigController : MonoBehaviour
 
   private float getFramePerSec()
   {
+    // TODO: https://answers.unity.com/questions/64331/accurate-frames-per-second-count.html
     return 1.0f / Time.deltaTime;
   }
 

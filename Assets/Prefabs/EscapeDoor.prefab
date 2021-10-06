@@ -447,4 +447,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412b9d87584c6184cab6a73441823a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerReference: {fileID: -2775837120590753941, guid: da2b439d1a2de5c46a4f428f8cf4fe19, type: 3}
   doorAnimator: {fileID: 8413449848014640486}

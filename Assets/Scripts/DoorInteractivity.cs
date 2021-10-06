@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorInteractivity : MonoBehaviour
 {
+  public InputActionReference triggerReference = null;
+
   [SerializeField] private Animator doorAnimator;
 
-  private void OnMouseEnter()
+  private void Awake()
   {
-    Debug.Log("Mouse entered.");
-    DoorOpen();
+    triggerReference.action.started += DoorUnlock;
   }
 
-  public void DoorOpen()
+  private void OnDestroy()
   {
-    Debug.Log("Performing door open animation.");
+    triggerReference.action.started -= DoorUnlock;
+  }
+
+  public void DoorUnlock(InputAction.CallbackContext ctx)
+  {
+    Debug.Log("Door unlocked. Performing door open animation.");
     doorAnimator.Play("DoorOpen", 0, 0.0f);
-    gameObject.SetActive(false);
   }
 }
