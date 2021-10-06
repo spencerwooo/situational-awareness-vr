@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DoorInteractivity : MonoBehaviour
 {
-  void Start()
-  {
+  [SerializeField] private Animator doorAnimator;
 
+  private void OnMouseEnter()
+  {
+    Debug.Log("Mouse entered.");
+    DoorOpen();
   }
 
-  void Update()
+  public void DoorOpen()
   {
-
+    Debug.Log("Performing door open animation.");
+    doorAnimator.Play("DoorOpen", 0, 0.0f);
+    gameObject.SetActive(false);
   }
 }
