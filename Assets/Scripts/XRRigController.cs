@@ -17,6 +17,10 @@ public class XRRigController : MonoBehaviour
   private float rayLength = 30.0f;
   private RaycastHit vision;
 
+  private int frameCount = 0;
+  private double dt = 0.0f, fps = 0.0f;
+  private float updateRate = 4.0f;
+
   private void Awake()
   {
     if (mainCamera == null)
@@ -25,10 +29,15 @@ public class XRRigController : MonoBehaviour
     }
   }
 
+  private void Update()
+  {
+    updateFPS();
+    UpdatePlayerInteractionData();
+  }
+
   private void FixedUpdate()
   {
     HeadMountRaycast();
-    UpdatePlayerInteractionData();
   }
 
   private void HeadMountRaycast()
@@ -54,15 +63,23 @@ public class XRRigController : MonoBehaviour
     Vector3 playerPosition = mainCamera.transform.position;
     Vector3 playerOrientation = mainCamera.transform.forward;
 
-    framePerSecText.text = string.Format("{0}", getFramePerSec());
+    framePerSecText.text = string.Format("{0:0}", fps);
     playerPositionText.text = FormatVector3(playerPosition);
     playerOrientationText.text = FormatVector3(playerOrientation);
   }
 
-  private float getFramePerSec()
+  private void updateFPS()
   {
     // TODO: https://answers.unity.com/questions/64331/accurate-frames-per-second-count.html
-    return 1.0f / Time.deltaTime;
+    frameCount++;
+    dt += Time.smoothDeltaTime;
+
+    if (dt > 1.0 / updateRate)
+    {
+      fps = frameCount / dt;
+      frameCount = 0;
+      dt -= 1.0 / updateRate;
+    }
   }
 
   private string FormatVector3(Vector3 vec)
