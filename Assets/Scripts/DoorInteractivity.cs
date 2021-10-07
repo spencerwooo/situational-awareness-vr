@@ -16,9 +16,9 @@ public class DoorInteractivity : MonoBehaviour
   {
     if (DoorLocked)
     {
-
       Debug.Log(string.Format("Door {0} opening.", gameObject.name));
       DoorLocked = false;
+
       doorAnimator.Play("DoorOpen", 0, 0.0f);
       lightingTop.GetComponent<Renderer>().material = lightingGreen;
       lightingBottom.GetComponent<Renderer>().material = lightingGreen;
@@ -29,9 +29,9 @@ public class DoorInteractivity : MonoBehaviour
   {
     if (!DoorLocked)
     {
-
       Debug.Log(string.Format("Door {0} closing.", gameObject.name));
       DoorLocked = true;
+
       doorAnimator.Play("DoorClose", 0, 0.0f);
       lightingTop.GetComponent<Renderer>().material = lightingRed;
       lightingBottom.GetComponent<Renderer>().material = lightingRed;
