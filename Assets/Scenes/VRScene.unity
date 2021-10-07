@@ -5737,6 +5737,14 @@ PrefabInstance:
       value: EscapeDoor
       objectReference: {fileID: 0}
     - target: {fileID: 9020931157746087299, guid: ca788570af2e15847accdb5b7259309d, type: 3}
+      propertyPath: wireNoPower
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b1b5ba2b5ec26a49b1cb7db45226498, type: 2}
+    - target: {fileID: 9020931157746087299, guid: ca788570af2e15847accdb5b7259309d, type: 3}
+      propertyPath: wirePowerUp
+      value: 
+      objectReference: {fileID: 2100000, guid: 8635fd2a66e239544b039a623e5cf539, type: 2}
+    - target: {fileID: 9020931157746087299, guid: ca788570af2e15847accdb5b7259309d, type: 3}
       propertyPath: connectedWires.Array.size
       value: 3
       objectReference: {fileID: 0}
