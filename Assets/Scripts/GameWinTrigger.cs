@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GameWinTrigger : MonoBehaviour
@@ -16,10 +14,9 @@ public class GameWinTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
-        {
-            Debug.Log("Game won!");
-            winText.SetActive(true);
-        }
+        if (other.gameObject != player) return;
+        
+        Debug.Log("Game won!");
+        winText.SetActive(true);
     }
 }
