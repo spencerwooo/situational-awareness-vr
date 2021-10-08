@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class DoorMatTrigger : MonoBehaviour
 {
-  [SerializeField] private GameObject connectedDoor;
-  [SerializeField] private GameObject targetTrigger;
+    [SerializeField] private GameObject connectedDoor;
+    [SerializeField] private GameObject targetTrigger;
 
-  private DoorInteractivity _doorInteractivity;
+    private DoorInteractivity _doorInteractivity;
 
-  private void Awake()
-  {
-    _doorInteractivity = connectedDoor.GetComponent<DoorInteractivity>();
-  }
-
-  private void OnTriggerEnter(Collider other)
-  {
-    if (other.gameObject == targetTrigger)
+    private void Awake()
     {
-      if (_doorInteractivity.doorLocked)
-      {
-        _doorInteractivity.DoorUnlock();
-      }
+        _doorInteractivity = connectedDoor.GetComponent<DoorInteractivity>();
     }
-  }
 
-  private void OnTriggerExit(Collider other)
-  {
-    if (!_doorInteractivity.doorLocked)
+    private void OnTriggerEnter(Collider other)
     {
-      _doorInteractivity.DoorLock();
+        if (other.gameObject != targetTrigger) return;
+
+        if (_doorInteractivity.doorLocked)
+        {
+            _doorInteractivity.DoorUnlock();
+        }
     }
-  }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!_doorInteractivity.doorLocked)
+        {
+            _doorInteractivity.DoorLock();
+        }
+    }
 }
