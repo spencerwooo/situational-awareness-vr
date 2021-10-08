@@ -2,47 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRHandController : MonoBehaviour
 {
-  public InputActionReference TriggerReference = null;
+  public InputActionReference triggerReference = null;
   [SerializeField] private XRRayInteractor rayInteractor;
 
-  private GameObject triggeredDoor = null;
-  private RaycastHit rayInteractable;
+  private GameObject _triggeredDoor = null;
+  private RaycastHit _rayInteractable;
 
   private void Awake()
   {
-    TriggerReference.action.started += DoorController;
+    triggerReference.action.started += DoorController;
   }
 
   private void OnDestroy()
   {
-    TriggerReference.action.started -= DoorController;
+    triggerReference.action.started -= DoorController;
   }
 
   private void DoorController(InputAction.CallbackContext ctx)
   {
-    if (rayInteractor.TryGetCurrent3DRaycastHit(out rayInteractable))
+    if (rayInteractor.TryGetCurrent3DRaycastHit(out _rayInteractable))
     {
-      if (rayInteractable.collider.CompareTag("EscapeDoor"))
+      if (_rayInteractable.collider.CompareTag("EscapeDoor"))
       {
-        triggeredDoor = rayInteractable.collider.gameObject.transform.parent.gameObject;
+        _triggeredDoor = _rayInteractable.collider.gameObject.transform.parent.gameObject;
       }
     }
 
-    if (triggeredDoor)
+    if (_triggeredDoor)
     {
-      DoorInteractivity doorController = triggeredDoor.GetComponent<DoorInteractivity>();
+      DoorInteractivity doorController = _triggeredDoor.GetComponent<DoorInteractivity>();
 
-      if (doorController.DoorLocked)
+      if (doorController.doorLocked)
       {
-        doorController.doorUnlock();
+        doorController.DoorUnlock();
       }
       else
       {
-        doorController.doorLock();
+        doorController.DoorLock();
       }
     }
   }

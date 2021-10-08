@@ -7,29 +7,29 @@ public class DoorMatTrigger : MonoBehaviour
   [SerializeField] private GameObject connectedDoor;
   [SerializeField] private GameObject targetTrigger;
 
-  private DoorInteractivity doorInteractivity;
+  private DoorInteractivity _doorInteractivity;
 
   private void Awake()
   {
-    doorInteractivity = connectedDoor.GetComponent<DoorInteractivity>();
+    _doorInteractivity = connectedDoor.GetComponent<DoorInteractivity>();
   }
 
   private void OnTriggerEnter(Collider other)
   {
     if (other.gameObject == targetTrigger)
     {
-      if (doorInteractivity.DoorLocked)
+      if (_doorInteractivity.doorLocked)
       {
-        doorInteractivity.doorUnlock();
+        _doorInteractivity.DoorUnlock();
       }
     }
   }
 
   private void OnTriggerExit(Collider other)
   {
-    if (!doorInteractivity.DoorLocked)
+    if (!_doorInteractivity.doorLocked)
     {
-      doorInteractivity.doorLock();
+      _doorInteractivity.DoorLock();
     }
   }
 }

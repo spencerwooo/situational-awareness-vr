@@ -13,25 +13,26 @@ public class XRRigController : MonoBehaviour
   public TextMeshProUGUI playerPositionText;
   public TextMeshProUGUI playerOrientationText;
 
-  private GameObject mainCamera;
-  private float rayLength = 30.0f;
-  private RaycastHit vision;
+  private const float RayLength = 30.0f;
+  private GameObject _mainCamera;
+  private RaycastHit _vision;
 
-  private int frameCount = 0;
-  private double elapsedTime = 0.0f, framePerSecond = 0.0f;
-  private float updateRate = 4.0f;
+  private int _frameCount = 0;
+  private double _elapsedTime = 0.0f;
+  private double _framePerSecond = 0.0f;
+  private const float UpdateRate = 4.0f;
 
   private void Awake()
   {
-    if (mainCamera == null)
+    if (_mainCamera == null)
     {
-      mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+      _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
   }
 
   private void Update()
   {
-    updateFPS();
+    UpdateFPS();
     UpdatePlayerInteractionData();
   }
 
@@ -45,46 +46,46 @@ public class XRRigController : MonoBehaviour
     int layerMask = 1 << 8;
     layerMask = ~layerMask;
 
-    Vector3 headsetPos = mainCamera.transform.position;
-    Vector3 headsetDir = mainCamera.transform.forward;
+    Vector3 headsetPos = _mainCamera.transform.position;
+    Vector3 headsetDir = _mainCamera.transform.forward;
 
-    Debug.DrawRay(headsetPos, headsetDir * rayLength, Color.red, 0.5f);
+    Debug.DrawRay(headsetPos, headsetDir * RayLength, Color.red, 0.5f);
 
-    if (Physics.Raycast(headsetPos, headsetDir, out vision, rayLength, layerMask))
+    if (Physics.Raycast(headsetPos, headsetDir, out _vision, RayLength, layerMask))
     {
-      hitObjectText.text = vision.collider.name;
-      hitPointText.text = FormatVector3(vision.point);
-      distanceText.text = string.Format("{0:0.00}", vision.distance);
+      hitObjectText.text = _vision.collider.name;
+      hitPointText.text = FormatVector3(_vision.point);
+      distanceText.text = $"{_vision.distance:0.00}";
     }
   }
 
   private void UpdatePlayerInteractionData()
   {
-    Vector3 playerPosition = mainCamera.transform.position;
-    Vector3 playerOrientation = mainCamera.transform.forward;
+    Vector3 playerPosition = _mainCamera.transform.position;
+    Vector3 playerOrientation = _mainCamera.transform.forward;
 
-    framePerSecText.text = string.Format("{0:0}", framePerSecond);
+    framePerSecText.text = $"{_framePerSecond:0}";
     playerPositionText.text = FormatVector3(playerPosition);
     playerOrientationText.text = FormatVector3(playerOrientation);
   }
 
-  private void updateFPS()
+  private void UpdateFPS()
   {
     // Borrowed from: https://answers.unity.com/questions/64331/accurate-frames-per-second-count.html
-    frameCount++;
-    elapsedTime += Time.smoothDeltaTime;
+    _frameCount++;
+    _elapsedTime += Time.smoothDeltaTime;
 
-    if (elapsedTime > 1.0 / updateRate)
+    if (_elapsedTime > 1.0 / UpdateRate)
     {
-      framePerSecond = frameCount / elapsedTime;
-      frameCount = 0;
-      elapsedTime -= 1.0 / updateRate;
+      _framePerSecond = _frameCount / _elapsedTime;
+      _frameCount = 0;
+      _elapsedTime -= 1.0 / UpdateRate;
     }
   }
 
-  private string FormatVector3(Vector3 vec)
+  private static string FormatVector3(Vector3 vec)
   {
     // format a Vector3 <a, b, c> to string [a, b, c]
-    return string.Format("[{0:0.00}, {1:0.00}, {2:0.00}]", vec.x, vec.y, vec.z);
+    return $"[{vec.x:0.00}, {vec.y:0.00}, {vec.z:0.00}]";
   }
 }
