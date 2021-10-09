@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class InteractionLogger : MonoBehaviour
     public Button button;
 
     private bool _loggingEnabled = false;
-    private readonly List<string> _loggingData = new List<string>();
+    private List<string> _loggingData = new List<string>();
 
     private void Start()
     {
@@ -27,8 +28,11 @@ public class InteractionLogger : MonoBehaviour
         if (!_loggingEnabled) return;
 
         _loggingData.Add(
-            $"{FormatVector3(interactionData.userPosition)},{FormatVector3(interactionData.userOrientation)}," +
-            $"{FormatVector3(interactionData.cameraHitPoint)}");
+            $"{FormatVector3(interactionData.userPosition, log: true)},{FormatVector3(interactionData.userOrientation, log: true)}," +
+            $"{interactionData.cameraHitObjectName},{FormatVector3(interactionData.cameraHitPoint, log: true)}," +
+            $"{interactionData.cameraHitPointDistance:0.00}," +
+            $"{interactionData.controllerHitObjectName},{FormatVector3(interactionData.controllerHitPoint, log: true)}," +
+            $"{interactionData.controllerHitPointDistance:0.00}");
     }
 
     private void StartInteractionLogging()
@@ -45,19 +49,32 @@ public class InteractionLogger : MonoBehaviour
         Debug.Log("Stopped user interaction logging.");
         _loggingEnabled = false;
 
-        foreach (string data in _loggingData)
-        {
-            Debug.Log(data);
-        }
+        // using a coroutine here as saving to disk requires time so as not to block the main update
+        StartCoroutine(LogDataToFile());
 
         button.GetComponentInChildren<TextMeshProUGUI>().text = "Start logging user interactions";
         // button.GetComponentInChildren<Image>().color = new Color(197, 76, 68);
     }
 
-
-    protected internal static string FormatVector3(Vector3 vec)
+    private IEnumerator LogDataToFile()
     {
-        // format a Vector3 <a, b, c> to string [a, b, c]
-        return $"[{vec.x:0.00}, {vec.y:0.00}, {vec.z:0.00}]";
+        StreamWriter writer = new StreamWriter("Logs/InteractionLogs.csv");
+        writer.WriteLine("user_position,user_orientation,camera_hit_obj,camera_hit_point,camera_hit_dist," +
+                         "controller_hit_obj,controller_hit_point,controller_hit_distance");
+
+        foreach (string log in _loggingData)
+        {
+            writer.WriteLine(log);
+        }
+
+        writer.Close();
+        yield return true;
+    }
+
+    protected internal static string FormatVector3(Vector3 vec, bool log = false)
+    {
+        // format a Vector3 <a, b, c> to string (a, b, c)
+        if (log) return $"\"({vec.x:0.00},{vec.y:0.00},{vec.z:0.00})\"";
+        return $"({vec.x:0.00}, {vec.y:0.00}, {vec.z:0.00})";
     }
 }
