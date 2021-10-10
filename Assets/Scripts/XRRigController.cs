@@ -48,7 +48,7 @@ public class XRRigController : MonoBehaviour
         if (Physics.Raycast(headsetPos, headsetDir, out _vision, RayLength, layerMask))
         {
             hitObjectText.text = _vision.collider.name;
-            hitPointText.text = InteractionLogger.FormatVector3(_vision.point);
+            hitPointText.text = InteractionLogger.Vector3ToString(_vision.point);
             distanceText.text = $"{_vision.distance:0.00}";
 
             interactionData.cameraHitPoint = _vision.point;
@@ -63,8 +63,8 @@ public class XRRigController : MonoBehaviour
         Vector3 playerOrientation = mainCamera.transform.forward;
 
         framePerSecText.text = $"{_framePerSecond:0}";
-        playerPositionText.text = InteractionLogger.FormatVector3(playerPosition);
-        playerOrientationText.text = InteractionLogger.FormatVector3(playerOrientation);
+        playerPositionText.text = InteractionLogger.Vector3ToString(playerPosition);
+        playerOrientationText.text = InteractionLogger.Vector3ToString(playerOrientation);
 
         interactionData.userPosition = playerPosition;
         interactionData.userOrientation = playerOrientation;

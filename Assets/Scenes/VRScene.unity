@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7864827, g: 0.786579, b: 0.7864493, a: 1}
+  m_IndirectSpecularColor: {r: 0.7864847, g: 0.78658116, b: 0.7864517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1321,8 +1321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -230.41992, y: 37.454926}
-  m_SizeDelta: {x: 428.8398, y: 50.9099}
+  m_AnchoredPosition: {x: -124.11987, y: 37.454926}
+  m_SizeDelta: {x: 216.2395, y: 50.9099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388958022
 MonoBehaviour:
@@ -4519,6 +4519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionData: {fileID: 11400000, guid: b98fdf431aa2947fbb56d0d48d6f798d, type: 2}
   button: {fileID: 388958022}
+  loggingFrequency: 60
 --- !u!1001 &1507036964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5345,7 +5346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start logging user interactions
+  m_text: START LOGGING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3da1056503ef43509195ff8992e3b09, type: 2}
   m_sharedMaterial: {fileID: 719186348848083975, guid: c3da1056503ef43509195ff8992e3b09, type: 2}
