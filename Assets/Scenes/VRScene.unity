@@ -4316,8 +4316,8 @@ GameObject:
   - component: {fileID: 1502981184}
   - component: {fileID: 1502981183}
   - component: {fileID: 1502981182}
-  - component: {fileID: 1502981181}
   - component: {fileID: 1502981185}
+  - component: {fileID: 1502981181}
   - component: {fileID: 1502981180}
   - component: {fileID: 1502981179}
   - component: {fileID: 1502981178}
@@ -4519,7 +4519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionData: {fileID: 11400000, guid: b98fdf431aa2947fbb56d0d48d6f798d, type: 2}
   button: {fileID: 388958022}
-  loggingFrequency: 60
+  loggingFrequency: 10
 --- !u!1001 &1507036964
 PrefabInstance:
   m_ObjectHideFlags: 0

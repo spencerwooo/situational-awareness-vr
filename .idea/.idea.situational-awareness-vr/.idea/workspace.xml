@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionLogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRRigController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRRigController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scenes/VRScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/XRRigController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/InteractionLogger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -79,7 +80,7 @@
       <workItem from="1633709677827" duration="3955000" />
       <workItem from="1633864298277" duration="1266000" />
       <workItem from="1633865607399" duration="1867000" />
-      <workItem from="1633868034995" duration="180000" />
+      <workItem from="1633868034995" duration="3513000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -109,7 +110,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633713634945</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Rider configurations">
+      <created>1633868386624</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633868386624</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Log to file with datetime and configurable log frequency">
+      <created>1633868446224</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633868446224</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +152,8 @@
     <MESSAGE value="Add Rider configuration files" />
     <MESSAGE value="Format code to 4 spaces" />
     <MESSAGE value="Add game win logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game win logic" />
+    <MESSAGE value="Rider configurations" />
+    <MESSAGE value="Log to file with datetime and configurable log frequency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Log to file with datetime and configurable log frequency" />
   </component>
 </project>
