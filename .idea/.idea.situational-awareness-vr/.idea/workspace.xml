@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DoorTrigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DoorTrigger.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +33,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teleporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zEODJxSGK7pkedJtrA88wFoyfT" />
   <component name="ProjectViewState">
@@ -41,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -79,6 +87,8 @@
       <workItem from="1633865607399" duration="1867000" />
       <workItem from="1633868034995" duration="3513000" />
       <workItem from="1633952326221" duration="2825000" />
+      <workItem from="1634043719379" duration="1981000" />
+      <workItem from="1634140103636" duration="6397000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>

@@ -10,18 +10,21 @@ public class XRHandController : MonoBehaviour
     public InteractionData interactionData;
     
     [SerializeField] private XRRayInteractor rayInteractor;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject winText;
 
     private GameObject _triggeredDoor;
+    private GameObject _teleporter;
     private RaycastHit _rayInteractable;
 
     private void Awake()
     {
-        triggerReference.action.started += DoorController;
+        triggerReference.action.started += InteractableController;
     }
 
     private void OnDestroy()
     {
-        triggerReference.action.started -= DoorController;
+        triggerReference.action.started -= InteractableController;
     }
 
     private void FixedUpdate()
@@ -34,20 +37,38 @@ public class XRHandController : MonoBehaviour
         }
     }
 
-    private void DoorController(InputAction.CallbackContext ctx)
+    private void InteractableController(InputAction.CallbackContext ctx)
     {
         if (rayInteractor.TryGetCurrent3DRaycastHit(out _rayInteractable))
         {
+            // deactivated for now, not used in the current puzzle
             if (_rayInteractable.collider.CompareTag("EscapeDoor"))
             {
                 _triggeredDoor = _rayInteractable.collider.gameObject.transform.parent.gameObject;
             }
+
+            if (_rayInteractable.collider.CompareTag("Teleporter"))
+            {
+                _teleporter = _rayInteractable.collider.gameObject;
+            }
         }
 
+        if (_teleporter)
+        {
+            // teleport player to the next escape room
+            Teleporter teleportTarget = _teleporter.GetComponent<Teleporter>();
+            if (teleportTarget.teleporterActivated) return;
+            
+            player.transform.position = teleportTarget.teleportTarget.transform.position;
+            teleportTarget.teleporterActivated = true;
+            winText.SetActive(false);
+        }
+    
+        // deactivated for now, not used in the current game logic
         if (_triggeredDoor)
         {
             var doorController = _triggeredDoor.GetComponent<DoorInteractivity>();
-
+        
             if (doorController.doorLocked)
             {
                 doorController.DoorUnlock();
