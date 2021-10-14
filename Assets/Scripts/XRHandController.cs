@@ -15,6 +15,7 @@ public class XRHandController : MonoBehaviour
 
     private GameObject _triggeredDoor;
     private GameObject _teleporter;
+    private GameObject _triggerCube;
     private RaycastHit _rayInteractable;
 
     private void Awake()
@@ -36,12 +37,12 @@ public class XRHandController : MonoBehaviour
             interactionData.controllerHitPointDistance = _rayInteractable.distance;
         }
     }
-
+    
     private void InteractableController(InputAction.CallbackContext ctx)
     {
         if (rayInteractor.TryGetCurrent3DRaycastHit(out _rayInteractable))
         {
-            // deactivated for now, not used in the current puzzle
+            // activated for now, will not be used in the final puzzle
             if (_rayInteractable.collider.CompareTag("EscapeDoor"))
             {
                 _triggeredDoor = _rayInteractable.collider.gameObject.transform.parent.gameObject;
@@ -50,6 +51,11 @@ public class XRHandController : MonoBehaviour
             if (_rayInteractable.collider.CompareTag("Teleporter"))
             {
                 _teleporter = _rayInteractable.collider.gameObject;
+            }
+
+            if (_rayInteractable.collider.CompareTag("TriggerCube"))
+            {
+                _triggerCube = _rayInteractable.collider.gameObject.transform.parent.gameObject;
             }
         }
 
@@ -63,8 +69,13 @@ public class XRHandController : MonoBehaviour
             teleportTarget.teleporterActivated = true;
             winText.SetActive(false);
         }
+
+        if (_triggerCube)
+        {
+            _triggerCube.GetComponent<CubeNumberCycler>().TriggerNumberCycle();
+        }
     
-        // deactivated for now, not used in the current game logic
+        // activated for now, will not be used in the final game logic
         if (_triggeredDoor)
         {
             var doorController = _triggeredDoor.GetComponent<DoorInteractivity>();
