@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Update IDEA workspace file">
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Remove visual studio specific configurations">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
     </list>
@@ -27,9 +27,11 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KeyRotator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teleporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PuzzleTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -88,7 +90,7 @@
       <workItem from="1634043719379" duration="1981000" />
       <workItem from="1634140103636" duration="6884000" />
       <workItem from="1634215145125" duration="7697000" />
-      <workItem from="1634385034671" duration="5726000" />
+      <workItem from="1634385034671" duration="8803000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -160,7 +162,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634390020165</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Reduce size of character controller">
+      <created>1634390888910</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634390888910</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Remove visual studio specific configurations">
+      <created>1634391005781</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634391005781</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +210,8 @@
     <MESSAGE value="Room 2 puzzle mechanics: cube number trigger cycler" />
     <MESSAGE value="Level 2 escape room game logic completed" />
     <MESSAGE value="Update IDEA workspace file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update IDEA workspace file" />
+    <MESSAGE value="Reduce size of character controller" />
+    <MESSAGE value="Remove visual studio specific configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove visual studio specific configurations" />
   </component>
 </project>
