@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Level 2 escape room game logic completed">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PuzzleTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PuzzleTrigger.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" afterDir="false" />
@@ -89,7 +91,7 @@
       <workItem from="1634043719379" duration="1981000" />
       <workItem from="1634140103636" duration="6884000" />
       <workItem from="1634215145125" duration="7697000" />
-      <workItem from="1634385034671" duration="4575000" />
+      <workItem from="1634385034671" duration="4884000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -179,6 +181,26 @@
     <MESSAGE value="Log to file with datetime and configurable log frequency" />
     <MESSAGE value="Add room 2 and 3 with teleportation" />
     <MESSAGE value="Room 2 puzzle mechanics: cube number trigger cycler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Room 2 puzzle mechanics: cube number trigger cycler" />
+    <MESSAGE value="Level 2 escape room game logic completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Level 2 escape room game logic completed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/PuzzleTrigger.cs</url>
+          <line>24</line>
+          <properties documentPath="C:\Users\Spencer\Documents\Unity\situational-awareness-vr\Assets\Scripts\PuzzleTrigger.cs" initialLine="24" containingFunctionPresentation="method 'ValidatePuzzle'">
+            <startOffsets>
+              <option value="734" />
+            </startOffsets>
+            <endOffsets>
+              <option value="768" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
