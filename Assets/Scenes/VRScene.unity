@@ -409,6 +409,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1204183391103519581, guid: ca788570af2e15847accdb5b7259309d, type: 3}
   m_PrefabInstance: {fileID: 63698328}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &63698330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3966228543309776105, guid: ca788570af2e15847accdb5b7259309d, type: 3}
+  m_PrefabInstance: {fileID: 63698328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &71783439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b784c647a98ab4e90a43d08a9e2a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1502981176}
   winText: {fileID: 601339560}
 --- !u!65 &225122971
 BoxCollider:
@@ -4131,6 +4136,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657558620}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &661976297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+  m_PrefabInstance: {fileID: 1511900176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &756869408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1021330016}
+  - component: {fileID: 1021330017}
   m_Layer: 0
   m_Name: Puzzle Cube
   m_TagString: Untagged
@@ -5095,6 +5106,24 @@ Transform:
   m_Father: {fileID: 792320942}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1021330017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021330015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecff66c3bdfd5e740be6d041fdd59f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitDoor: {fileID: 63698330}
+  puzzleCubes:
+  - {fileID: 661976297}
+  - {fileID: 1880199735}
+  - {fileID: 1304297093}
+  - {fileID: 1122713429}
 --- !u!1 &1054294600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5417,6 +5446,11 @@ Transform:
   m_Father: {fileID: 1200245770}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1122713429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+  m_PrefabInstance: {fileID: 1758788587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1141554345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,6 +5817,11 @@ MeshRenderer:
 --- !u!1 &1302968044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3466655873489569397, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+  m_PrefabInstance: {fileID: 1618732256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1304297093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
   m_PrefabInstance: {fileID: 1618732256}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1330024272
@@ -6985,7 +7024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919e39492806b334982b6b84c90dd927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_System: {fileID: 0}
+  m_System: {fileID: 1502981179}
   m_TurnSpeed: 60
   m_LeftHandTurnAction:
     m_UseReference: 1
@@ -7021,7 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf296fc962d7184ab14ad1841598d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_System: {fileID: 0}
+  m_System: {fileID: 1502981179}
   m_MoveSpeed: 5
   m_EnableStrafe: 1
   m_UseGravity: 1
@@ -7244,6 +7283,10 @@ PrefabInstance:
       propertyPath: tergetValue
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -6139760356709095011, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+      propertyPath: puzzleCubeTrigger
+      value: 
+      objectReference: {fileID: 1021330015}
     - target: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
       propertyPath: m_Name
       value: TriggerCube 1
@@ -7961,6 +8004,10 @@ PrefabInstance:
       propertyPath: tergetValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6139760356709095011, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+      propertyPath: puzzleCubeTrigger
+      value: 
+      objectReference: {fileID: 1021330015}
     - target: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
       propertyPath: m_Name
       value: TriggerCube 3
@@ -8540,6 +8587,10 @@ PrefabInstance:
       propertyPath: tergetValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -6139760356709095011, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+      propertyPath: puzzleCubeTrigger
+      value: 
+      objectReference: {fileID: 1021330015}
     - target: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
       propertyPath: m_Name
       value: TriggerCube 4
@@ -8644,7 +8695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b784c647a98ab4e90a43d08a9e2a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1502981176}
   winText: {fileID: 601339560}
 --- !u!65 &1778814166
 BoxCollider:
@@ -9948,6 +9999,11 @@ Transform:
   m_Father: {fileID: 1502981184}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1880199735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+  m_PrefabInstance: {fileID: 5823966637276448157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933704589
 GameObject:
   m_ObjectHideFlags: 0
@@ -10816,6 +10872,10 @@ PrefabInstance:
       propertyPath: tergetValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -6139760356709095011, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
+      propertyPath: puzzleCubeTrigger
+      value: 
+      objectReference: {fileID: 1021330015}
     - target: {fileID: 1137044103720874738, guid: b38fa238b66dc864e8b73d84a14eea03, type: 3}
       propertyPath: m_Name
       value: TriggerCube 2
