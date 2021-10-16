@@ -51,6 +51,7 @@ public class InteractionLogger : MonoBehaviour
         Debug.Log("Started user interaction logging.");
         _loggingEnabled = true;
 
+        interactionData.room1StartTime = DateTime.Now;
         button.GetComponentInChildren<TextMeshProUGUI>().text = "LOGGING ...";
         // button.GetComponentInChildren<Image>().color = new Color(80, 197, 68);
     }
@@ -70,16 +71,27 @@ public class InteractionLogger : MonoBehaviour
     private IEnumerator LogDataToFile()
     {
         string currentTime = DateTime.Now.ToString("yyMMdd-HHmmss");
-        StreamWriter writer = new StreamWriter($"Logs/InteractionLogs-{currentTime}.csv");
-        writer.WriteLine("frame_no,user_position,user_orientation,camera_hit_obj,camera_hit_point,camera_hit_dist," +
-                         "controller_hit_obj,controller_hit_point,controller_hit_distance");
+
+        StreamWriter logWriter = new StreamWriter($"Logs/InteractionLogs-{currentTime}.csv");
+        logWriter.WriteLine("frame_no,user_position,user_orientation,camera_hit_obj,camera_hit_point,camera_hit_dist," +
+                            "controller_hit_obj,controller_hit_point,controller_hit_distance");
 
         foreach (string log in _loggingData)
         {
-            writer.WriteLine(log);
+            logWriter.WriteLine(log);
         }
 
-        writer.Close();
+        logWriter.Close();
+
+        StreamWriter timeWriter = new StreamWriter($"Logs/PlayerTimeEachRoom-{currentTime}.txt");
+        timeWriter.WriteLine(
+            ($"Room 1: {(interactionData.room2StartTime - interactionData.room1StartTime):g}"));
+        timeWriter.WriteLine(
+            ($"Room 2: {(interactionData.room3StartTime - interactionData.room2StartTime):g}"));
+        timeWriter.WriteLine(
+            ($"Room 3: {(interactionData.room3EndTime - interactionData.room3StartTime):g}"));
+        timeWriter.Close();
+
         yield return true;
     }
 

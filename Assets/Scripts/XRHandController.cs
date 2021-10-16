@@ -8,7 +8,7 @@ public class XRHandController : MonoBehaviour
 {
     public InputActionReference triggerReference = null;
     public InteractionData interactionData;
-    
+
     [SerializeField] private XRRayInteractor rayInteractor;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject winText;
@@ -37,7 +37,7 @@ public class XRHandController : MonoBehaviour
             interactionData.controllerHitPointDistance = _rayInteractable.distance;
         }
     }
-    
+
     private void InteractableController(InputAction.CallbackContext ctx)
     {
         if (rayInteractor.TryGetCurrent3DRaycastHit(out _rayInteractable))
@@ -64,22 +64,35 @@ public class XRHandController : MonoBehaviour
             // teleport player to the next escape room
             Teleporter teleportTarget = _teleporter.GetComponent<Teleporter>();
             if (teleportTarget.teleporterActivated) return;
-            
+
             player.transform.position = teleportTarget.teleportTarget.transform.position;
             teleportTarget.teleporterActivated = true;
             winText.SetActive(false);
+
+            switch (_teleporter.gameObject.name)
+            {
+                case "Teleporter 1":
+                    interactionData.room2StartTime = DateTime.Now;
+                    break;
+                case "Teleporter 2":
+                    interactionData.room3StartTime = DateTime.Now;
+                    break;
+                case "Teleporter 3":
+                    interactionData.room3EndTime = DateTime.Now;
+                    break;
+            }
         }
 
         if (_triggerCube)
         {
             _triggerCube.GetComponent<CubeNumberCycler>().TriggerNumberCycle();
         }
-    
-        // activated for now, will not be used in the final game logic
+
+        // TODO: activated for now, will not be used in the final game logic
         if (_triggeredDoor)
         {
             var doorController = _triggeredDoor.GetComponent<DoorInteractivity>();
-        
+
             if (doorController.doorLocked)
             {
                 doorController.DoorUnlock();

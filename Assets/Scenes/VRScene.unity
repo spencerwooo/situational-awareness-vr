@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7864047, g: 0.78651, b: 0.78636944, a: 1}
+  m_IndirectSpecularColor: {r: 0.786404, g: 0.7865097, b: 0.7863691, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1990,13 +1990,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991911440251094495, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
       propertyPath: m_Name
-      value: Teleporter
+      value: Teleporter 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
 --- !u!4 &261479238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8991911440251094494, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
+  m_PrefabInstance: {fileID: 261479237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &261479239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8991911440251094495, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
   m_PrefabInstance: {fileID: 261479237}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &272295694
@@ -5996,7 +6001,7 @@ GameObject:
   - component: {fileID: 1054294603}
   - component: {fileID: 1054294602}
   m_Layer: 0
-  m_Name: Teleport Target
+  m_Name: Teleport Target 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6627,7 +6632,7 @@ GameObject:
   - component: {fileID: 1247490826}
   - component: {fileID: 1247490825}
   m_Layer: 0
-  m_Name: Teleport Target
+  m_Name: Teleport Target 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8348,7 +8353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502981176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.09, y: 0.88, z: -9.18}
+  m_LocalPosition: {x: 47.2, y: 0.88, z: -9.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870723902}
@@ -8370,6 +8375,9 @@ MonoBehaviour:
   interactionData: {fileID: 11400000, guid: b98fdf431aa2947fbb56d0d48d6f798d, type: 2}
   button: {fileID: 388958022}
   loggingFrequency: 10
+  teleporterGameObjects:
+  - {fileID: 8991911439999582902}
+  - {fileID: 261479239}
 --- !u!1001 &1507036964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10028,7 +10036,7 @@ GameObject:
   - component: {fileID: 1778814166}
   - component: {fileID: 1778814165}
   m_Layer: 0
-  m_Name: Game Win Trigger
+  m_Name: Game Win Trigger 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12938,7 +12946,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991911440251094495, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
       propertyPath: m_Name
-      value: Teleporter
+      value: Teleporter 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
+--- !u!1 &8991911439999582902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8991911440251094495, guid: bcd1d78aeccdb5240a4ffbdf5ce0be76, type: 3}
+  m_PrefabInstance: {fileID: 8991911439999582901}
+  m_PrefabAsset: {fileID: 0}
