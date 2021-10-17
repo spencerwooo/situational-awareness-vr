@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 221269739}
   - component: {fileID: 221269738}
   - component: {fileID: 221269737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2636,6 +2636,7 @@ GameObject:
   - component: {fileID: 426648716}
   - component: {fileID: 426648721}
   - component: {fileID: 426648720}
+  - component: {fileID: 426648722}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Interactive
@@ -2752,7 +2753,31 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 426648722}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: ChangeLayerOnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 426648722}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: RevertLayerOnLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -2842,6 +2867,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &426648722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426648715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f44a07ed584be439e80b5fc1644540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436710557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3535,7 @@ GameObject:
   - component: {fileID: 533420076}
   - component: {fileID: 533420075}
   - component: {fileID: 533420074}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4259,6 +4296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 221269736}
     m_Modifications:
+    - target: {fileID: -9195334384663461526, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4303,13 +4344,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6432099818705810534, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4651580333068701978, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3307531278845158470, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2481965458419996829, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 431ba0e7fc162c44f9933534c919267b, type: 2}
+    - target: {fileID: 376103152133210332, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
       propertyPath: m_Name
       value: XRControllerRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043511489956387391, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578149583137738979, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619225641134156614, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756583138425666249, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158676226541525647, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbdf2ee1dda380144b1389a58cb5c8fa, type: 3}
@@ -7797,7 +7878,7 @@ GameObject:
   - component: {fileID: 1464846668}
   - component: {fileID: 1464846667}
   - component: {fileID: 1464846671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -8242,11 +8323,11 @@ GameObject:
   - component: {fileID: 1502981182}
   - component: {fileID: 1502981185}
   - component: {fileID: 1502981181}
-  - component: {fileID: 1502981180}
   - component: {fileID: 1502981179}
   - component: {fileID: 1502981178}
   - component: {fileID: 1502981177}
-  m_Layer: 0
+  - component: {fileID: 1502981180}
+  m_Layer: 7
   m_Name: XR Rig
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8354,13 +8435,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.6
-  m_Radius: 0.3
+  m_Height: 2
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.88, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1502981181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8422,7 +8503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502981176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 97.8, y: 0.88, z: -9.18}
+  m_LocalPosition: {x: -10.1, y: 1.08, z: -9.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870723902}
@@ -8762,6 +8843,7 @@ GameObject:
   - component: {fileID: 1579549568}
   - component: {fileID: 1579549573}
   - component: {fileID: 1579549572}
+  - component: {fileID: 1579549574}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Interactive
@@ -8877,7 +8959,31 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1579549574}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: ChangeLayerOnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1579549574}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: RevertLayerOnLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -8967,6 +9073,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1579549574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579549567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f44a07ed584be439e80b5fc1644540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1589513731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10311,6 +10429,7 @@ GameObject:
   - component: {fileID: 1804732588}
   - component: {fileID: 1804732593}
   - component: {fileID: 1804732592}
+  - component: {fileID: 1804732594}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Interactive
@@ -10426,7 +10545,31 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1804732594}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: ChangeLayerOnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1804732594}
+        m_TargetAssemblyTypeName: SwapLayerWhenGrabbed, Assembly-CSharp
+        m_MethodName: RevertLayerOnLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -10516,6 +10659,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1804732594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804732587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f44a07ed584be439e80b5fc1644540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1806177313
 GameObject:
   m_ObjectHideFlags: 0
@@ -11426,7 +11581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1870723902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11441,7 +11596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870723901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.708, z: 0}
+  m_LocalPosition: {x: 0, y: 2.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1464846670}
