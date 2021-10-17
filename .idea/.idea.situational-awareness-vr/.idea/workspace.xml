@@ -5,11 +5,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="C# source code" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Swap grabbed object to non-interactive layer to avoid collision">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Fix trigger non-interactable after trigger teleportation">
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameWinTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameWinTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +33,10 @@
     <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/CubeNumberCycler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/XRHandController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/GameWinTrigger.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="NamedScopeManager">
     <scope name="C# source code" pattern="file[rider.module]:Assets/Scripts/*" />
@@ -99,7 +98,7 @@
       <workItem from="1634215145125" duration="7697000" />
       <workItem from="1634385034671" duration="8803000" />
       <workItem from="1634419685993" duration="3621000" />
-      <workItem from="1634474260673" duration="10676000" />
+      <workItem from="1634474260673" duration="10985000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634482827361</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fix trigger non-interactable after trigger teleportation">
+      <created>1634485501448</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634485501448</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +251,7 @@
     <MESSAGE value="Add a simplified version of room 3 puzzle" />
     <MESSAGE value="Format and cleanup source code" />
     <MESSAGE value="Swap grabbed object to non-interactive layer to avoid collision" />
-    <option name="LAST_COMMIT_MESSAGE" value="Swap grabbed object to non-interactive layer to avoid collision" />
+    <MESSAGE value="Fix trigger non-interactable after trigger teleportation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix trigger non-interactable after trigger teleportation" />
   </component>
 </project>
