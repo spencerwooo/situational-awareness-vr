@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Remove visual studio specific configurations">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionLogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/KeyRotator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/KeyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/KeyRotator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/KeyController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +32,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zEODJxSGK7pkedJtrA88wFoyfT" />
   <component name="ProjectViewState">
@@ -91,6 +93,7 @@
       <workItem from="1634215145125" duration="7697000" />
       <workItem from="1634385034671" duration="8803000" />
       <workItem from="1634419685993" duration="3621000" />
+      <workItem from="1634474260673" duration="4357000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>

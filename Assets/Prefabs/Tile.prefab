@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1432657323000734426}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: TriggerTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccbf521fe45e3448bde3518c292e4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileState: 0
   tileIdle: {fileID: 2100000, guid: fa69ce68031b85746a18a6317c603fda, type: 2}
   tileActive: {fileID: 2100000, guid: 38e5ad16637e4be41a6363fb446dcc66, type: 2}
   tileWrong: {fileID: 2100000, guid: b116b1da65800f1408a0d86ebde03f69, type: 2}
-  tileSolved: {fileID: 2100000, guid: ce6bad6a6aacf424bb24c65421f281d1, type: 2}
+  key: {fileID: 0}

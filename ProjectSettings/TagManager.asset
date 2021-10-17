@@ -9,6 +9,7 @@ TagManager:
   - EscapeDoor
   - Teleporter
   - TriggerCube
+  - TriggerTile
   layers:
   - Default
   - TransparentFX
