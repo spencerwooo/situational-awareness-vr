@@ -6,7 +6,7 @@ using UnityEngine;
 public class CubeNumberCycler : MonoBehaviour
 {
     public bool puzzleSolved = false;
-    
+
     [SerializeField] private GameObject puzzleCube;
     [SerializeField] private GameObject cubeNumber;
     [SerializeField] private int targetValue;

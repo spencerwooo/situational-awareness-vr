@@ -54,7 +54,7 @@ public class TileTrigger : MonoBehaviour
                 tileState = TileState.Idle;
                 break;
         }
-        
+
         _keyController.ValidatePuzzle();
     }
 

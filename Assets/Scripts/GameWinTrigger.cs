@@ -15,7 +15,7 @@ public class GameWinTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != player) return;
-        
+
         Debug.Log("Game won!");
         winText.SetActive(true);
     }
