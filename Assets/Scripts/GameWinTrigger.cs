@@ -16,7 +16,7 @@ public class GameWinTrigger : MonoBehaviour
     {
         if (other.gameObject != player) return;
 
-        Debug.Log("Game won!");
+        Debug.Log("Level completed!");
         winText.SetActive(true);
     }
 }

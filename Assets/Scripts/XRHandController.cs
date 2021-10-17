@@ -81,11 +81,14 @@ public class XRHandController : MonoBehaviour
                     interactionData.room3EndTime = DateTime.Now;
                     break;
             }
+
+            _teleporter = null;
         }
 
         if (_triggerCube)
         {
             _triggerCube.GetComponent<CubeNumberCycler>().TriggerNumberCycle();
+            _triggerCube = null;
         }
 
         // TODO: activated for now, will not be used in the final game logic
@@ -101,6 +104,8 @@ public class XRHandController : MonoBehaviour
             {
                 doorController.DoorLock();
             }
+
+            _triggeredDoor = null;
         }
     }
 }
