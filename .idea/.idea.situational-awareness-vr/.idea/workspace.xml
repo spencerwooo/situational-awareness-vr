@@ -5,7 +5,9 @@
     <option name="CUSTOM_SCOPE_NAME" value="C# source code" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Complete three level interaction logs" />
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +98,7 @@
       <workItem from="1634474260673" duration="10985000" />
       <workItem from="1634561276817" duration="1579000" />
       <workItem from="1634641493180" duration="596000" />
-      <workItem from="1634723377097" duration="6903000" />
+      <workItem from="1634723377097" duration="7753000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
