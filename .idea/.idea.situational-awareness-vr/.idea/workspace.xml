@@ -5,8 +5,9 @@
     <option name="CUSTOM_SCOPE_NAME" value="C# source code" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Fix trigger non-interactable after trigger teleportation">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRScene.unity" afterDir="false" />
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +31,10 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/CubeNumberCycler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/XRHandController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HueShifter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Spencer/Documents/Unity/situational-awareness-vr/Assets/Scripts/GameWinTrigger.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="NamedScopeManager">
     <scope name="C# source code" pattern="file[rider.module]:Assets/Scripts/*" />
@@ -69,10 +67,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18900">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18900" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -99,6 +97,9 @@
       <workItem from="1634385034671" duration="8803000" />
       <workItem from="1634419685993" duration="3621000" />
       <workItem from="1634474260673" duration="10985000" />
+      <workItem from="1634561276817" duration="1579000" />
+      <workItem from="1634641493180" duration="596000" />
+      <workItem from="1634723377097" duration="5470000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>

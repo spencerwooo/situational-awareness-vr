@@ -62,13 +62,6 @@ public class XRHandController : MonoBehaviour
         if (_teleporter)
         {
             // teleport player to the next escape room
-            Teleporter teleportTarget = _teleporter.GetComponent<Teleporter>();
-            if (teleportTarget.teleporterActivated) return;
-
-            player.transform.position = teleportTarget.teleportTarget.transform.position;
-            teleportTarget.teleporterActivated = true;
-            winText.SetActive(false);
-
             switch (_teleporter.gameObject.name)
             {
                 case "Teleporter 1":
@@ -81,6 +74,14 @@ public class XRHandController : MonoBehaviour
                     interactionData.room3EndTime = DateTime.Now;
                     break;
             }
+
+            Teleporter teleportTarget = _teleporter.GetComponent<Teleporter>();
+            if (teleportTarget == null) return;
+            if (teleportTarget.teleporterActivated) return;
+
+            player.transform.position = teleportTarget.teleportTarget.transform.position;
+            teleportTarget.teleporterActivated = true;
+            winText.SetActive(false);
 
             _teleporter = null;
         }
