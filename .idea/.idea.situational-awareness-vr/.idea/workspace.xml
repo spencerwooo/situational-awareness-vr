@@ -5,9 +5,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="C# source code" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Fix teleporter target not found issue">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XRHandController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,7 @@
       <workItem from="1634474260673" duration="10985000" />
       <workItem from="1634561276817" duration="1579000" />
       <workItem from="1634641493180" duration="596000" />
-      <workItem from="1634723377097" duration="5470000" />
+      <workItem from="1634723377097" duration="6539000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -213,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634485501448</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fix teleporter target not found issue">
+      <created>1634729259340</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1634729259340</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +259,7 @@
     <MESSAGE value="Format and cleanup source code" />
     <MESSAGE value="Swap grabbed object to non-interactive layer to avoid collision" />
     <MESSAGE value="Fix trigger non-interactable after trigger teleportation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix trigger non-interactable after trigger teleportation" />
+    <MESSAGE value="Fix teleporter target not found issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix teleporter target not found issue" />
   </component>
 </project>
