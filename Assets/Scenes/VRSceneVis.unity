@@ -1813,6 +1813,7 @@ GameObject:
   - component: {fileID: 512449555}
   - component: {fileID: 512449554}
   - component: {fileID: 512449553}
+  - component: {fileID: 512449552}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1820,6 +1821,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &512449552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512449551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4ecebbebc80ad4fab4d51c361a1d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 10
+  fastMovementSpeed: 100
+  freeLookSensitivity: 3
+  zoomSensitivity: 10
+  fastZoomSensitivity: 50
 --- !u!114 &512449553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3454,6 +3472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecff66c3bdfd5e740be6d041fdd59f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitDoor: {fileID: 0}
+  puzzleCubes: []
 --- !u!1 &1071570007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4812,6 +4832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7886625cccf78664b919db31106e5aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedDoor: {fileID: 0}
+  tileSolved: {fileID: 0}
+  keyUnlocked: {fileID: 0}
+  keyLocked: {fileID: 0}
 --- !u!1001 &1511900176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7457,6 +7481,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412b9d87584c6184cab6a73441823a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorLocked: 1
+  doorAnimator: {fileID: 0}
+  lightingTop: {fileID: 0}
+  lightingBottom: {fileID: 0}
+  connectedWires: []
+  lightingRed: {fileID: 0}
+  lightingGreen: {fileID: 0}
+  wireNoPower: {fileID: 0}
+  wirePowerUp: {fileID: 0}
 --- !u!1 &3385597282069945541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3966228543309776105, guid: ca788570af2e15847accdb5b7259309d, type: 3}

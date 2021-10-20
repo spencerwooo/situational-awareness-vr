@@ -5,12 +5,7 @@
     <option name="CUSTOM_SCOPE_NAME" value="C# source code" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/link.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/link.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRSceneVis.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRSceneVis.unity" afterDir="false" />
-    </list>
+    <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="Add coordinates visualisation script" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +107,7 @@
       <workItem from="1634641493180" duration="596000" />
       <workItem from="1634723377097" duration="7753000" />
       <workItem from="1634755577157" duration="3335000" />
-      <workItem from="1634763479647" duration="793000" />
+      <workItem from="1634763479647" duration="1182000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -247,7 +242,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634761072075</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add new separate scene for visualisation with free look cam">
+      <created>1634764561547</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1634764561547</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add coordinates visualisation script">
+      <created>1634764672539</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1634764672539</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +299,8 @@
     <MESSAGE value="Fix teleporter target not found issue" />
     <MESSAGE value="Complete three level interaction logs" />
     <MESSAGE value="Add free look camera to Unity visualisation scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add free look camera to Unity visualisation scene" />
+    <MESSAGE value="Add new separate scene for visualisation with free look cam" />
+    <MESSAGE value="Add coordinates visualisation script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add coordinates visualisation script" />
   </component>
 </project>
