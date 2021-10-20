@@ -6,8 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bfe4e4c-e218-4f8a-a6b5-c5d8880218f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/link.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/link.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.situational-awareness-vr/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRSceneVis.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRSceneVis.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +19,13 @@
   <component name="ChangesViewManager">
     <option name="groupingKeys">
       <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XML File" />
+      </list>
     </option>
   </component>
   <component name="Git.Settings">
@@ -31,6 +40,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VisualiseCoords.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CubeNumberCycler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FreeLookCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -101,7 +111,8 @@
       <workItem from="1634561276817" duration="1579000" />
       <workItem from="1634641493180" duration="596000" />
       <workItem from="1634723377097" duration="7753000" />
-      <workItem from="1634755577157" duration="912000" />
+      <workItem from="1634755577157" duration="3335000" />
+      <workItem from="1634763479647" duration="793000" />
     </task>
     <task id="LOCAL-00001" summary="Fix code styles spotted by Rider">
       <created>1633710436566</created>
@@ -229,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634730997992</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add free look camera to Unity visualisation scene">
+      <created>1634761072075</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1634761072075</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +289,7 @@
     <MESSAGE value="Fix trigger non-interactable after trigger teleportation" />
     <MESSAGE value="Fix teleporter target not found issue" />
     <MESSAGE value="Complete three level interaction logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete three level interaction logs" />
+    <MESSAGE value="Add free look camera to Unity visualisation scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add free look camera to Unity visualisation scene" />
   </component>
 </project>
