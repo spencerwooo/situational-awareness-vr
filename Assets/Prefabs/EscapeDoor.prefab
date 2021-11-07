@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83f3f56317ade204baa71042487bd3e2, type: 2}
+  - {fileID: 2100000, guid: 2ab8149ec4775284bada96c1b85b4a09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb6b01bdb0e0e424786d3246dd1072f9, type: 2}
+  - {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,9 +447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412b9d87584c6184cab6a73441823a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorLocked: 1
+  doorLocked: 1
   doorAnimator: {fileID: 8413449848014640486}
   lightingTop: {fileID: 3385597282409316385}
   lightingBottom: {fileID: 3385597282629666118}
+  connectedWires: []
   lightingRed: {fileID: 2100000, guid: b68fab9b92be39b41b05b27b07e299a5, type: 2}
   lightingGreen: {fileID: 2100000, guid: 8a21d14a1118ccf4cb2da800a29d6af8, type: 2}
+  wireNoPower: {fileID: 0}
+  wirePowerUp: {fileID: 0}
