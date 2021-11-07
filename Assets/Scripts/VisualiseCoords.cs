@@ -35,8 +35,6 @@ public class VisualiseCoords : MonoBehaviour
 
             Vector3 controllerHitPoint = ParseVector3(data[i]["controller_hit_point"].ToString());
             RenderCoordinate(controllerHitPoint, controllerHitPointMaterial);
-
-            // if (i > 100) break;
         }
 
         Debug.Log("Loaded CSV.");
