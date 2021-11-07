@@ -27,8 +27,6 @@ public class VisualiseCoords : MonoBehaviour
             // - camera_hit_obj, camera_hit_point, camera_hit_dist
             // - controller_hit_obj, controller_hit_point, controller_hit_distance
 
-            Debug.Log(data[i]["user_position"]);
-
             Vector3 userPosition = ParseVector3(data[i]["user_position"].ToString());
             RenderCoordinate(userPosition, userPositionMaterial);
 
