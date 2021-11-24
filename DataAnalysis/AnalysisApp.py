@@ -6,10 +6,9 @@ import dash
 
 # import numpy as np
 import pandas as pd
+import plotly.express as px
 from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output, State
-
-# import plotly.express as px
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
@@ -46,12 +45,47 @@ def parse_uploaded_file(contents, filename, date):
         print(e)
         return html.Div(["There was an error parsing the file."])
 
+    cam_dist_hist = px.histogram(df, x="camera_hit_dist", marginal="rug", nbins=50)
+    con_dist_hist = px.histogram(df, x="controller_hit_distance", marginal="rug", nbins=50)
+
+    cam_attention_count = (
+        df.groupby("camera_hit_obj")
+        .count()
+        .reset_index()
+        .rename(columns={"frame_no": "count"})
+        .sort_values(["count"], ascending=False)
+    )
+    cam_attention = px.bar(cam_attention_count, x="camera_hit_obj", y="count", color="camera_hit_obj")
+    con_attention_count = (
+        df.groupby("controller_hit_obj")
+        .count()
+        .reset_index()
+        .rename(columns={"frame_no": "count"})
+        .sort_values(["count"], ascending=False)
+    )
+    con_attention = px.bar(con_attention_count, x="controller_hit_obj", y="count", color="controller_hit_obj")
+
     return html.Div(
         [
             html.Div(f"{filename} - {datetime.fromtimestamp(date)}"),
             html.H6(),
             dash_table.DataTable(
-                data=df.head().to_dict("records"), columns=[{"name": i, "id": i} for i in df.columns],
+                data=df.head(100).to_dict("records"), columns=[{"name": i, "id": i} for i in df.columns], page_size=10
+            ),
+            html.Hr(),
+            html.Div(
+                [
+                    dcc.Graph(id="camera_attention", figure=cam_attention, style={"width": "50%"}),
+                    dcc.Graph(id="controller_attention", figure=con_attention, style={"width": "50%"}),
+                ],
+                style={"display": "flex"},
+            ),
+            html.Div(
+                [
+                    dcc.Graph(id="camera_hit_dist_histo", figure=cam_dist_hist, style={"width": "50%"}),
+                    dcc.Graph(id="controller_hit_dist_histo", figure=con_dist_hist, style={"width": "50%"}),
+                ],
+                style={"display": "flex"},
             ),
             html.Hr(),
             html.Div("Raw Content"),
