@@ -10,3 +10,6 @@ dependencies:
   - python=3.9
   - pandas
   - ipympl
+  - pip:
+    - ipyfilechooser
+    - dash

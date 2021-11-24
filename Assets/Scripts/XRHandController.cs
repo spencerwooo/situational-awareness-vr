@@ -66,9 +66,11 @@ public class XRHandController : MonoBehaviour
             {
                 case "Teleporter 1":
                     interactionData.room2StartTime = DateTime.Now;
+                    interactionData.room2StartFrame = interactionData.frameNumber;
                     break;
                 case "Teleporter 2":
                     interactionData.room3StartTime = DateTime.Now;
+                    interactionData.room3StartFrame = interactionData.frameNumber;
                     break;
                 case "Teleporter 3":
                     interactionData.room3EndTime = DateTime.Now;

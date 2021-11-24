@@ -15,8 +15,11 @@ public class InteractionData : ScriptableObject
     [NonSerialized] public Vector3 controllerHitPoint;
     [NonSerialized] public float controllerHitPointDistance;
 
+    [NonSerialized] public int frameNumber;
     [NonSerialized] public DateTime room1StartTime;
     [NonSerialized] public DateTime room2StartTime;
     [NonSerialized] public DateTime room3StartTime;
     [NonSerialized] public DateTime room3EndTime;
+    [NonSerialized] public int room2StartFrame;
+    [NonSerialized] public int room3StartFrame;
 }

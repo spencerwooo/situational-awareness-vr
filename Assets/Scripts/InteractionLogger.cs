@@ -34,6 +34,8 @@ public class InteractionLogger : MonoBehaviour
         _framesElapsed++;
         if (_framesElapsed % loggingFrequency != 0) return;
 
+        interactionData.frameNumber = _framesElapsed;
+
         _loggingData.Add(
             $"{_framesElapsed}," +
             $"{Vector3ToString(interactionData.userPosition, log: true)}," +
@@ -83,13 +85,16 @@ public class InteractionLogger : MonoBehaviour
 
         logWriter.Close();
 
-        StreamWriter timeWriter = new StreamWriter($"Logs/PlayerTimeEachRoom-{currentTime}.txt");
+        StreamWriter timeWriter = new StreamWriter($"Logs/SummaryLogs-{currentTime}.txt");
         timeWriter.WriteLine(
-            ($"Room 1: {(interactionData.room2StartTime - interactionData.room1StartTime):g}"));
+            ($"Room 1 Time: {(interactionData.room2StartTime - interactionData.room1StartTime):g}"));
+        timeWriter.Write("Room 1 Start Frame: 0");
         timeWriter.WriteLine(
-            ($"Room 2: {(interactionData.room3StartTime - interactionData.room2StartTime):g}"));
+            ($"Room 2 Time: {(interactionData.room3StartTime - interactionData.room2StartTime):g}"));
+        timeWriter.Write($"Room 2 Start Frame: {interactionData.room2StartFrame}");
         timeWriter.WriteLine(
-            ($"Room 3: {(interactionData.room3EndTime - interactionData.room3StartTime):g}"));
+            ($"Room 3 Time: {(interactionData.room3EndTime - interactionData.room3StartTime):g}"));
+        timeWriter.Write($"Room 3 Start Frame: {interactionData.room3StartFrame}");
         timeWriter.Close();
 
         yield return true;
