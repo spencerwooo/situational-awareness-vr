@@ -4,14 +4,21 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VisualiseCoords : MonoBehaviour
 {
-    // Using this method as initialisation so that the script doesn't have to be added to
-    // a specific game object, making the hierarchy a bit more tidy
-    [RuntimeInitializeOnLoadMethod]
+    public Button button;
 
-    private static void OnRuntimeMethodLoad()
+    private void Start()
+    {
+        button.onClick.AddListener(() =>
+        {
+            Visualise();
+        });
+    }
+
+    private void Visualise()
     {
         var data = CsvReader.Read("InteractionLogs-211020-125559");
 
