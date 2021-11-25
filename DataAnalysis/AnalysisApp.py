@@ -26,7 +26,9 @@ from dash.dependencies import Input, Output, State
 
 from utils.plot_3d import coords_concat, duration_parser
 
-external_stylesheets = ["https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"]
+external_stylesheets = [
+    "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
+]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
@@ -40,6 +42,7 @@ app.layout = html.Div(
                             html.Img(src="https://img.icons8.com/color/96/000000/cosine.png", className="h-10 w-10"),
                             html.Span("Visualisation and Analysis", className="ml-3 text-xl"),
                         ],
+                        href="/",
                         className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0",
                     ),
                     dcc.Upload(
@@ -55,9 +58,15 @@ app.layout = html.Div(
                 className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between",
             ),
         ),
-        html.Div(id="output-visualise", className="container mx-auto p-5 flex flex-1"),
+        html.Div(
+            dcc.Loading(html.Div(id="output-visualise"), color="#80CBC4", type="cube"),
+            className="container mx-auto p-5 flex flex-1 justify-center items-center",
+        ),
         html.Footer(
-            "Situational Awareness Visualisation and Analysis ©️2021 - Shangbo Wu",
+            [
+                html.P("Situational Awareness Visualisation and Analysis"),
+                html.I("Built with ❤️ at UofG ©️ 2021 - Shangbo Wu"),
+            ],
             className="p-5 text-sm text-gray-400 bg-gray-50 text-center",
         ),
     ],
@@ -211,29 +220,29 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
     room_1_scatter = scatter_figure(
         coords_room_1,
         title="Room 1",
-        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room1.png",
+        img="https://cdn.jsdelivr.net/gh/spencerwooo/situational-awareness-vr/DataAnalysis/room_topdown/room1.png",
         img_x=-20.5,
         img_y=15.2,
         img_sizex=35,
-        img_sizey=38,
+        img_sizey=37.6,
     )
     room_2_scatter = scatter_figure(
         coords_room_2,
         title="Room 2",
-        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room2.png",
-        img_x=35.1,
+        img="https://cdn.jsdelivr.net/gh/spencerwooo/situational-awareness-vr/DataAnalysis/room_topdown/room2.png",
+        img_x=35.6,
         img_y=15.2,
-        img_sizex=36,
-        img_sizey=38,
+        img_sizex=35.6,
+        img_sizey=37.6,
     )
     room_3_scatter = scatter_figure(
         coords_room_3,
         title="Room 3",
-        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room3.png",
+        img="https://cdn.jsdelivr.net/gh/spencerwooo/situational-awareness-vr/DataAnalysis/room_topdown/room3.png",
         img_x=88.5,
         img_y=14.7,
         img_sizex=35,
-        img_sizey=38,
+        img_sizey=37.6,
     )
 
     # * Plot 2: 3D interactive coordinates plotted directly as scatter plots.
@@ -276,33 +285,26 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
 
     return html.Div(
         [
-            html.Div(f"{csv_filename} - {datetime.fromtimestamp(csv_date)}"),
-            dash_table.DataTable(
-                data=df.head(100).to_dict("records"), columns=[{"name": i, "id": i} for i in df.columns], page_size=6
-            ),
-            html.Div(f"{txt_filename} - {datetime.fromtimestamp(txt_date)}"),
-            html.Div(
-                txt_content,
-                className="block whitespace-pre overflow-x-scroll font-mono text-xs border bg-gray-100 p-2 rounded",
-            ),
             html.Hr(),
             html.Div(
                 [
-                    html.Div("Player time for each room"),
+                    html.Div("Player time spent clearing each room", className="font-bold"),
                     html.Div(
                         [
                             html.P(
-                                "Some explanatory text here for benchmarking the player's performance",
-                                className="text-gray-400",
+                                "Summary of your performance for the game is visualised here. The time you spent "
+                                "observing and gathering information inside the virtual environment is a decisive "
+                                "factor in your decision making, and will impact your attention of your surroundings. ",
+                                className="text-gray-400 w-1/3",
                             ),
-                            dcc.Graph(id="time_benchmark", figure=time_benchmark, className="w-1/3 h-72"),
+                            dcc.Graph(id="time_benchmark", figure=time_benchmark, className="h-72"),
                         ],
                         className="flex justify-between",
                     ),
                 ]
             ),
             html.Hr(),
-            html.Div("Top-down Coordinate Visualisation"),
+            html.Div("Top-down Coordinate Visualisation", className="font-bold"),
             html.Div(
                 [
                     dcc.Graph(id="scatter_vis", figure=room_1_scatter),
@@ -312,7 +314,7 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
                 className="grid grid-cols-3",
             ),
             html.Hr(),
-            html.Div("Interactive 3D Scatter Visualisation"),
+            html.Div("Interactive 3D Scatter Visualisation", className="font-bold"),
             html.Div(
                 [
                     dcc.Graph(id="scatter_3d_vis", figure=room_1_3d_fig),
@@ -322,6 +324,7 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
                 className="grid grid-cols-3",
             ),
             html.Hr(),
+            html.Div("Game objects that were attended to or interacted with", className="font-bold"),
             html.Div(
                 [
                     dcc.Graph(id="camera_attention", figure=cam_attention),
@@ -329,12 +332,24 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
                 ],
                 className="grid grid-cols-2",
             ),
+            html.Div("Histogram of attention game objects' distance to player", className="font-bold"),
             html.Div(
                 [
                     dcc.Graph(id="camera_hit_dist_histo", figure=cam_dist_hist),
                     dcc.Graph(id="controller_hit_dist_histo", figure=con_dist_hist),
                 ],
                 className="grid grid-cols-2",
+            ),
+            html.Hr(),
+            html.Div("Raw data processed and analysed:", className="font-sm text-gray-400 font-bold"),
+            html.Div(f"{csv_filename} - {datetime.fromtimestamp(csv_date)}", className="font-sm text-gray-400"),
+            dash_table.DataTable(
+                data=df.head(100).to_dict("records"), columns=[{"name": i, "id": i} for i in df.columns], page_size=6
+            ),
+            html.Div(f"{txt_filename} - {datetime.fromtimestamp(txt_date)}", className="font-sm text-gray-400"),
+            html.Div(
+                txt_content,
+                className="block whitespace-pre overflow-x-scroll font-mono text-xs border bg-gray-100 p-2 rounded",
             ),
         ],
         className="flex flex-col space-y-4",
