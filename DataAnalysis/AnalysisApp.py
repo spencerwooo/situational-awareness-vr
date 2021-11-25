@@ -288,7 +288,7 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
             html.Hr(),
             html.Div(
                 [
-                    html.Div("Player time spent clearing each room", className="font-bold"),
+                    html.Div("Player Time Spent Clearing Each Room", className="font-bold"),
                     html.Div(
                         [
                             html.P(
@@ -304,7 +304,17 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
                 ]
             ),
             html.Hr(),
-            html.Div("Top-down Coordinate Visualisation", className="font-bold"),
+            html.Div(
+                [
+                    html.Div("Top-down Coordinate Visualisation", className="font-bold"),
+                    html.P(
+                        "Three of the gameplay coordinates are visualised as scatter plots with the z-index omitted: "
+                        "user_position, camera_hit_point, and controller_hit_point. These coordinates indicate the "
+                        "points you been through and exact coordinates that you paid attention to or interacted with.",
+                        className="text-gray-400",
+                    ),
+                ],
+            ),
             html.Div(
                 [
                     dcc.Graph(id="scatter_vis", figure=room_1_scatter),
@@ -314,7 +324,15 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
                 className="grid grid-cols-3",
             ),
             html.Hr(),
-            html.Div("Interactive 3D Scatter Visualisation", className="font-bold"),
+            html.Div(
+                html.Div("Interactive 3D Scatter Visualisation", className="font-bold"),
+                html.P(
+                    "The coordinates are in a 3D virtual world. Hence, here we are visualising them in 3D. The 3D "
+                    "scatter plots are interactive, where you can dive directly into the plots and investigate the "
+                    "actual coordinations that best describe situational awareness.",
+                    className="text-gray-400",
+                ),
+            ),
             html.Div(
                 [
                     dcc.Graph(id="scatter_3d_vis", figure=room_1_3d_fig),
