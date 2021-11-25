@@ -3,12 +3,12 @@ import io
 from datetime import datetime
 
 import dash
-
-# import numpy as np
 import pandas as pd
 import plotly.express as px
 from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output, State
+
+from utils.plot_3d import coords_concat
 
 external_stylesheets = ["https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"]
 
@@ -39,7 +39,7 @@ app.layout = html.Div(
                 className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between",
             ),
         ),
-        html.Div(id="output-visualise", className="container mx-auto p-5 flex flex-col flex-1 space-y-4"),
+        html.Div(id="output-visualise", className="container mx-auto p-5 flex flex-1"),
         html.Footer(
             "Situational Awareness Visualisation and Analysis ©️2021 - Shangbo Wu",
             className="p-5 text-sm text-gray-400 bg-gray-50 text-center",
@@ -84,22 +84,52 @@ def parse_uploaded_file(contents, filename, date):
     start_frame = [summary[1], summary[3], summary[5]]
     start_frame = [int(f) for f in start_frame]
 
+    df_room_1 = df.iloc[0 : start_frame[1], :]
+    df_room_2 = df.iloc[start_frame[1] : start_frame[2], :]
+    df_room_3 = df.iloc[start_frame[2] : -1, :]
+
+    coords_room_1 = coords_concat(df_room_1)
+    coords_room_2 = coords_concat(df_room_2)
+    coords_room_3 = coords_concat(df_room_3)
+
+    def interactive_3d_figure(coords, title):
+        fig = px.scatter_3d(
+            coords, x="x", y="y", z="z", color="type", symbol="type", opacity=0.6, width=540, height=540, title=title
+        )
+        fig.update_layout(
+            legend=dict(yanchor="bottom", y=1.02, xanchor="left", x=0.01, itemsizing="constant"),
+            legend_title_text=None,
+        )
+        fig.update_traces(marker={"size": 3})
+        return fig
+
+    room_1_3d_fig = interactive_3d_figure(coords_room_1, "Room 1")
+    room_2_3d_fig = interactive_3d_figure(coords_room_2, "Room 2")
+    room_3_3d_fig = interactive_3d_figure(coords_room_3, "Room 3")
+
     time_benchmark = px.bar(time_spent, y=time_spent.index, x="time", color=time_spent.index)
 
     cam_dist_hist = px.histogram(
-        df, x="camera_hit_dist", marginal="rug", nbins=50, title="Camera attention distance to player"
+        df, x="camera_hit_dist", marginal="rug", nbins=50, title="Histogram of camera attention distance to player"
     )
     con_dist_hist = px.histogram(
-        df, x="controller_hit_distance", marginal="rug", nbins=50, title="Controller attention to player"
+        df,
+        x="controller_hit_distance",
+        marginal="rug",
+        nbins=50,
+        title="Histogram of controller attention distance to player",
     )
 
-    cam_attention_count = (
-        df.groupby("camera_hit_obj")
-        .count()
-        .reset_index()
-        .rename(columns={"frame_no": "count"})
-        .sort_values(["count"], ascending=False)
-    )
+    def aggregate_attention_obj(column_name):
+        return (
+            df.groupby(column_name)
+            .count()
+            .reset_index()
+            .rename(columns={"frame_no": "count"})
+            .sort_values(["count"], ascending=False)
+        )
+
+    cam_attention_count = aggregate_attention_obj(column_name="camera_hit_obj")
     cam_attention = px.bar(
         cam_attention_count,
         x="camera_hit_obj",
@@ -107,13 +137,7 @@ def parse_uploaded_file(contents, filename, date):
         color="camera_hit_obj",
         title="Camera attention game objects",
     )
-    con_attention_count = (
-        df.groupby("controller_hit_obj")
-        .count()
-        .reset_index()
-        .rename(columns={"frame_no": "count"})
-        .sort_values(["count"], ascending=False)
-    )
+    con_attention_count = aggregate_attention_obj(column_name="controller_hit_obj")
     con_attention = px.bar(
         con_attention_count,
         x="controller_hit_obj",
@@ -133,27 +157,37 @@ def parse_uploaded_file(contents, filename, date):
                 txt_content,
                 className="block whitespace-pre overflow-x-scroll font-mono text-xs border bg-gray-100 p-2 rounded",
             ),
+            html.Hr(),
             dcc.Graph(id="time_benchmark", figure=time_benchmark),
             html.Hr(),
             html.Div("Top-down Coordinate Visualisation"),
             html.Hr(),
             html.Div("Interactive 3D Scatter Visualisation"),
+            html.Div(
+                [
+                    dcc.Graph(id="scatter_3d_vis", figure=room_1_3d_fig),
+                    dcc.Graph(id="scatter_3d_vis", figure=room_2_3d_fig),
+                    dcc.Graph(id="scatter_3d_vis", figure=room_3_3d_fig),
+                ],
+                className="grid grid-cols-3",
+            ),
             html.Hr(),
             html.Div(
                 [
-                    dcc.Graph(id="camera_attention", figure=cam_attention, style={"width": "50%"}),
-                    dcc.Graph(id="controller_attention", figure=con_attention, style={"width": "50%"}),
+                    dcc.Graph(id="camera_attention", figure=cam_attention),
+                    dcc.Graph(id="controller_attention", figure=con_attention),
                 ],
-                style={"display": "flex"},
+                className="grid grid-cols-2",
             ),
             html.Div(
                 [
-                    dcc.Graph(id="camera_hit_dist_histo", figure=cam_dist_hist, style={"width": "50%"}),
-                    dcc.Graph(id="controller_hit_dist_histo", figure=con_dist_hist, style={"width": "50%"}),
+                    dcc.Graph(id="camera_hit_dist_histo", figure=cam_dist_hist),
+                    dcc.Graph(id="controller_hit_dist_histo", figure=con_dist_hist),
                 ],
-                style={"display": "flex"},
+                className="grid grid-cols-2",
             ),
-        ]
+        ],
+        className="flex flex-col space-y-4",
     )
 
 
