@@ -325,13 +325,15 @@ def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date
             ),
             html.Hr(),
             html.Div(
-                html.Div("Interactive 3D Scatter Visualisation", className="font-bold"),
-                html.P(
-                    "The coordinates are in a 3D virtual world. Hence, here we are visualising them in 3D. The 3D "
-                    "scatter plots are interactive, where you can dive directly into the plots and investigate the "
-                    "actual coordinations that best describe situational awareness.",
-                    className="text-gray-400",
-                ),
+                [
+                    html.Div("Interactive 3D Scatter Visualisation", className="font-bold"),
+                    html.P(
+                        "The coordinates are in a 3D virtual world. Hence, here we are visualising them in 3D. The 3D "
+                        "scatter plots are interactive, where you can dive directly into the plots and investigate the "
+                        "actual coordinations that best describe situational awareness.",
+                        className="text-gray-400",
+                    ),
+                ]
             ),
             html.Div(
                 [
@@ -412,4 +414,4 @@ def update_output(content: list[str, str], name: list[str, str], date: list[str,
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=False)
