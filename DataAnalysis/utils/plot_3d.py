@@ -1,4 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import pandas as pd
+
+
+def duration_parser(delta: str) -> str:
+    """Parse time duration string into a float-like string.
+
+    Args:
+        delta (str): The time duration formatted as '00:01:45.292135'
+
+    Returns:
+        str: The time duration as seconds formatted as float-like string
+
+    """
+    t, f = delta.split(".")
+    h, m, s = t.split(":")
+    return f"{int(h) * 60 * 60 + int(m) * 60 + int(s)}.{f}"
 
 
 def coords_transform(df: pd.DataFrame) -> pd.DataFrame:
@@ -21,7 +39,7 @@ def split_coords_series(series: pd.Series) -> pd.DataFrame:
     )
 
 
-def coords_concat(df: pd.DataFrame):
+def coords_concat(df: pd.DataFrame) -> pd.DataFrame:
     user_pos = split_coords_series(df["user_position"])
     cam_hit = split_coords_series(df["camera_hit_point"])
     con_hit = split_coords_series(df["controller_hit_point"])

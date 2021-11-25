@@ -1,3 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Main Dash app entry point - interactive situational awareness visualisation and analysis framework
+
+This module is a web-based application powered by Dash and Plotly.py, both of which are essential data analysis,
+visualisation, and hosting libraries. Dash is the library to build the web app which contains interactive plots that are
+drawn with Plotly.py
+
+The web app expects two input files from the Dash file uploader:
+
+* CSV: Live data recorded at real-time, which contains coordinates, distances, game objects, etc.
+* TXT: Summary data containing the frame slicing number for each room, and the time player uses in each room.
+
+"""
+
 import base64
 import io
 from datetime import datetime
@@ -5,10 +20,11 @@ from datetime import datetime
 import dash
 import pandas as pd
 import plotly.express as px
+from plotly.graph_objects import Figure
 from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output, State
 
-from utils.plot_3d import coords_concat
+from utils.plot_3d import coords_concat, duration_parser
 
 external_stylesheets = ["https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"]
 
@@ -49,12 +65,107 @@ app.layout = html.Div(
 )
 
 
-def parse_uploaded_file(contents, filename, date):
+def scatter_figure(
+    coords: pd.DataFrame, title: str, img: str, img_x: float, img_y: float, img_sizex: float, img_sizey: float
+) -> Figure:
+    """Extracts the three coordinates from the dataframe and create a 2D scatter plot, which is overlayed on the top of
+    the top-down view of the game scene with the image provided as an external URL.
+
+    Args:
+        coords (pd.DataFrame): The coordinate dataframe, which contains x, y, z, and type (user/cam/controller).
+        title (str): The title of the plot.
+        img (str): The absolute external URL of the image.
+        img_x (float): Background image top right x anchor point.
+        img_y (float): Background image top right y anchor point.
+        img_sizex (float): The x side length of the image.
+        img_sizey (float): The y side length of the image.
+
+    Returns:
+        Figure: A Plotly.py figure instance.
+
+    """
+    fig = px.scatter(coords, x="x", y="y", color="type", width=500, height=580, title=title, opacity=0.6)
+    fig.update_layout(
+        legend=dict(yanchor="bottom", y=1.02, xanchor="right", x=1, itemsizing="constant"),
+        legend_title_text=None,
+        template="plotly_white",
+    )
+    fig.add_layout_image(
+        dict(
+            source=img,
+            xref="x",
+            yref="y",
+            x=img_x,
+            y=img_y,
+            sizex=img_sizex,
+            sizey=img_sizey,
+            sizing="stretch",
+            opacity=0.8,
+            layer="below",
+        )
+    )
+    return fig
+
+
+def interactive_3d_figure(coords: pd.DataFrame, title: str) -> Figure:
+    """Interactive 3D plots of the coordinates (user/cam/controller)
+
+    Args:
+        coords (pd.DataFrame): Coordinates dataframe containing x, y, z, and type.
+        title (str): The title of the 3D plot.
+
+    Returns:
+        Figure: A Plotly.py figure instance.
+
+    """
+    fig = px.scatter_3d(
+        coords, x="x", y="y", z="z", color="type", symbol="type", opacity=0.6, width=560, height=560, title=title
+    )
+    fig.update_layout(
+        legend=dict(yanchor="bottom", y=1.02, xanchor="right", x=1, itemsizing="constant"), legend_title_text=None,
+    )
+    fig.update_traces(marker={"size": 3})
+    return fig
+
+
+def aggregate_attention_obj(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
+    """Aggregate the number of game objects by their names - used for plotting histograms later.
+
+    Args:
+        df (pd.DataFrame): The main dataframe containing all live data collected.
+        column_name (str): The name of the game object column.
+
+    Returns:
+        pd.DataFrame: An aggregated dataframe containing the number of each unique game object.
+
+    """
+    return (
+        df.groupby(column_name)
+        .count()
+        .reset_index()
+        .rename(columns={"frame_no": "count"})
+        .sort_values(["count"], ascending=False)
+    )
+
+
+def parse_uploaded_file(contents: list[str, str], filename: list[str, str], date: list[str, str]) -> html.Div:
+    """Expects two files from the upload: a CSV file and a TXT file.
+
+    Args:
+        contents (list[str, str]): Base64 encodings of the two file contents.
+        filename (list[str, str]): The names of the two files, one ending with .csv, and the other ending with .txt.
+        date (list[str, str]): The last modified date of the two files respectively.
+
+    Returns:
+        html.Div: Dash HTML component, renders the web page contents.
+
+    """
     _, content_string_0 = contents[0].split(",")
     _, content_string_1 = contents[1].split(",")
     decoded_0 = base64.b64decode(content_string_0)
     decoded_1 = base64.b64decode(content_string_1)
 
+    # Parse the two uploaded files and determining whether the contents are of the right specification
     try:
         if "csv" in filename[0] and "txt" in filename[1]:
             df = pd.read_csv(io.StringIO(decoded_0.decode("utf-8")))
@@ -71,11 +182,12 @@ def parse_uploaded_file(contents, filename, date):
         print(e)
         return html.Div(["There was an error parsing the file."])
 
-    def duration_parser(delta):
-        t, f = delta.split(".")
-        h, m, s = t.split(":")
-        return f"{int(h) * 60 * 60 + int(m) * 60 + int(s)}.{f}"
-
+    # Sample of the summary file contains:
+    #
+    # - Room 1 Time: 0:00:49.886678   -> The time for the player to clear room 1
+    # - Room 1 Start Frame: 0         -> The frame number when the player started room 1
+    #
+    # A total of three rooms are logged in the summary text, the following section parse the time and frames from it.
     summary = [line.split(":", 1)[-1] for line in txt_content.splitlines()]
     time_spent = [summary[0], summary[2], summary[4]]
     time_spent = pd.DataFrame(
@@ -84,31 +196,55 @@ def parse_uploaded_file(contents, filename, date):
     start_frame = [summary[1], summary[3], summary[5]]
     start_frame = [int(f) for f in start_frame]
 
+    # Live data for each of the room is separated with the frame slicing number parsed from above.
     df_room_1 = df.iloc[0 : start_frame[1], :]
     df_room_2 = df.iloc[start_frame[1] : start_frame[2], :]
     df_room_3 = df.iloc[start_frame[2] : -1, :]
 
+    # The coordinates of the user_position, camera_attention_point, and controller_attention_point are extracted here,
+    # and being fed into a separate dataframe for easier Plotly Express plotting integration.
     coords_room_1 = coords_concat(df_room_1)
     coords_room_2 = coords_concat(df_room_2)
     coords_room_3 = coords_concat(df_room_3)
 
-    def interactive_3d_figure(coords, title):
-        fig = px.scatter_3d(
-            coords, x="x", y="y", z="z", color="type", symbol="type", opacity=0.6, width=540, height=540, title=title
-        )
-        fig.update_layout(
-            legend=dict(yanchor="bottom", y=1.02, xanchor="left", x=0.01, itemsizing="constant"),
-            legend_title_text=None,
-        )
-        fig.update_traces(marker={"size": 3})
-        return fig
+    # * Plot 1: 2D scatter plots of the top-down views of the game, with user/cam/controller coordinates scattered.
+    room_1_scatter = scatter_figure(
+        coords_room_1,
+        title="Room 1",
+        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room1.png",
+        img_x=-20.5,
+        img_y=15.2,
+        img_sizex=35,
+        img_sizey=38,
+    )
+    room_2_scatter = scatter_figure(
+        coords_room_2,
+        title="Room 2",
+        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room2.png",
+        img_x=35.1,
+        img_y=15.2,
+        img_sizex=36,
+        img_sizey=38,
+    )
+    room_3_scatter = scatter_figure(
+        coords_room_3,
+        title="Room 3",
+        img="https://raw.githubusercontent.com/spencerwooo/situational-awareness-vr/main/DataAnalysis/room_topdown/room3.png",
+        img_x=88.5,
+        img_y=14.7,
+        img_sizex=35,
+        img_sizey=38,
+    )
 
+    # * Plot 2: 3D interactive coordinates plotted directly as scatter plots.
     room_1_3d_fig = interactive_3d_figure(coords_room_1, "Room 1")
     room_2_3d_fig = interactive_3d_figure(coords_room_2, "Room 2")
     room_3_3d_fig = interactive_3d_figure(coords_room_3, "Room 3")
 
+    # * Plot 3: Benchmark of the player's time spent clearing each room.
     time_benchmark = px.bar(time_spent, y=time_spent.index, x="time", color=time_spent.index)
 
+    # * Plot 4: Histogram of the cam/controller attention object's distance-to-player.
     cam_dist_hist = px.histogram(
         df, x="camera_hit_dist", marginal="rug", nbins=50, title="Histogram of camera attention distance to player"
     )
@@ -120,16 +256,8 @@ def parse_uploaded_file(contents, filename, date):
         title="Histogram of controller attention distance to player",
     )
 
-    def aggregate_attention_obj(column_name):
-        return (
-            df.groupby(column_name)
-            .count()
-            .reset_index()
-            .rename(columns={"frame_no": "count"})
-            .sort_values(["count"], ascending=False)
-        )
-
-    cam_attention_count = aggregate_attention_obj(column_name="camera_hit_obj")
+    # * Plot 5: Bar plot of the number of unique game objects brought to attention during gameplay.
+    cam_attention_count = aggregate_attention_obj(df, column_name="camera_hit_obj")
     cam_attention = px.bar(
         cam_attention_count,
         x="camera_hit_obj",
@@ -137,7 +265,7 @@ def parse_uploaded_file(contents, filename, date):
         color="camera_hit_obj",
         title="Camera attention game objects",
     )
-    con_attention_count = aggregate_attention_obj(column_name="controller_hit_obj")
+    con_attention_count = aggregate_attention_obj(df, column_name="controller_hit_obj")
     con_attention = px.bar(
         con_attention_count,
         x="controller_hit_obj",
@@ -158,9 +286,31 @@ def parse_uploaded_file(contents, filename, date):
                 className="block whitespace-pre overflow-x-scroll font-mono text-xs border bg-gray-100 p-2 rounded",
             ),
             html.Hr(),
-            dcc.Graph(id="time_benchmark", figure=time_benchmark),
+            html.Div(
+                [
+                    html.Div("Player time for each room"),
+                    html.Div(
+                        [
+                            html.P(
+                                "Some explanatory text here for benchmarking the player's performance",
+                                className="text-gray-400",
+                            ),
+                            dcc.Graph(id="time_benchmark", figure=time_benchmark, className="w-1/3 h-72"),
+                        ],
+                        className="flex justify-between",
+                    ),
+                ]
+            ),
             html.Hr(),
             html.Div("Top-down Coordinate Visualisation"),
+            html.Div(
+                [
+                    dcc.Graph(id="scatter_vis", figure=room_1_scatter),
+                    dcc.Graph(id="scatter_vis", figure=room_2_scatter),
+                    dcc.Graph(id="scatter_vis", figure=room_3_scatter),
+                ],
+                className="grid grid-cols-3",
+            ),
             html.Hr(),
             html.Div("Interactive 3D Scatter Visualisation"),
             html.Div(
@@ -197,7 +347,19 @@ def parse_uploaded_file(contents, filename, date):
     State("upload-csv", "filename"),
     State("upload-csv", "last_modified"),
 )
-def update_output(content, name, date):
+def update_output(content: list[str, str], name: list[str, str], date: list[str, str]) -> html.Div:
+    """Dash application callback - when a file is uploaded, then the relevant output is updated accordingly if both of
+    the uploaded files are of the right format and can be parsed normally.
+
+    Args:
+        content (list[str, str]): Contents of the uploaded file - base64 encoded.
+        name (list[str, str]): The filenames of both of the uploaded files.
+        date (list[str, str]): The last modified date of the two files.
+
+    Returns:
+        html.Div: Dash HTML component - warning message, or rendered visualisation component.
+
+    """
     if content is not None:
         if len(content) == 2:
             return parse_uploaded_file(content, name, date)
