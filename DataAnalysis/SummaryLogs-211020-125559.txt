@@ -1,0 +1,6 @@
+Room 1 Time: 0:00:49.886678
+Room 1 Start Frame: 0
+Room 2 Time: 0:00:37.422453
+Room 2 Start Frame: 610
+Room 3 Time: 0:01:17.358458
+Room 3 Start Frame: 1072
