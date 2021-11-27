@@ -72,6 +72,11 @@ public class InteractionLogger : MonoBehaviour
 
     private IEnumerator LogDataToFile()
     {
+        if (!Directory.Exists("./Logs"))
+        {
+            Directory.CreateDirectory("./Logs");
+        }
+
         string currentTime = DateTime.Now.ToString("yyMMdd-HHmmss");
 
         StreamWriter logWriter = new StreamWriter($"Logs/InteractionLogs-{currentTime}.csv");
@@ -88,13 +93,13 @@ public class InteractionLogger : MonoBehaviour
         StreamWriter timeWriter = new StreamWriter($"Logs/SummaryLogs-{currentTime}.txt");
         timeWriter.WriteLine(
             ($"Room 1 Time: {(interactionData.room2StartTime - interactionData.room1StartTime):g}"));
-        timeWriter.Write("Room 1 Start Frame: 0");
+        timeWriter.WriteLine("Room 1 Start Frame: 0");
         timeWriter.WriteLine(
             ($"Room 2 Time: {(interactionData.room3StartTime - interactionData.room2StartTime):g}"));
-        timeWriter.Write($"Room 2 Start Frame: {interactionData.room2StartFrame}");
+        timeWriter.WriteLine($"Room 2 Start Frame: {interactionData.room2StartFrame}");
         timeWriter.WriteLine(
             ($"Room 3 Time: {(interactionData.room3EndTime - interactionData.room3StartTime):g}"));
-        timeWriter.Write($"Room 3 Start Frame: {interactionData.room3StartFrame}");
+        timeWriter.WriteLine($"Room 3 Start Frame: {interactionData.room3StartFrame}");
         timeWriter.Close();
 
         yield return true;
