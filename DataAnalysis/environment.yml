@@ -7,9 +7,9 @@ dependencies:
   - jupyter
   - black
   - flake8
+  - pip
   - python=3.9
   - pandas
   - ipympl
   - pip:
-    - ipyfilechooser
     - dash
