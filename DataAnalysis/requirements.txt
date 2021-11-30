@@ -1,0 +1,9 @@
+matplotlib
+seaborn
+jupyter
+black
+flake8
+pandas
+ipympl
+dash
+gunicorn
